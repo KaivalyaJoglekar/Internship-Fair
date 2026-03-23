@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #000000;
+  --color-foreground: #ededed;
+  --color-brand: #d60f18;
+  --color-brand-light: #ff3b45;
+  --color-brand-dark: #a30b12;
+}
+
+@utility glass {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08); /* crisp subtle white border */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+@utility text-gradient-brand {
+  @apply bg-gradient-to-r from-brand to-brand-light bg-clip-text text-transparent;
+}
+
+@utility bg-gradient-brand {
+  @apply bg-gradient-to-r from-brand to-brand-light;
+}
+
+body {
+  color: var(--color-foreground);
+  background: var(--color-background);
+  font-family: Arial, Helvetica, sans-serif;
+}
