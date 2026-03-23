@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Briefcase, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { cn } from "../utils/cn";
 import { motion, AnimatePresence } from "framer-motion";
@@ -22,7 +23,7 @@ export default function Navbar() {
     <div className="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50">
       <nav className="glass rounded-full border border-white/10 px-6 h-16 flex items-center justify-between shadow-2xl transition-all duration-300">
         <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
-          <Briefcase className="w-5 h-5 text-brand" />
+          <Image src="/trclogosvg.svg" alt="TRC logo" width={30} height={30} className="rounded-full bg-white/10 p-1" />
           <span>Internship<span className="text-brand">Fair</span></span>
         </Link>
 

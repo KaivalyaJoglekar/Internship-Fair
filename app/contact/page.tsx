@@ -22,24 +22,7 @@ export default function Contact() {
             </p>
           </div>
         </div>
-
-        <form className="space-y-4 p-8 rounded-3xl bg-neutral-900 border border-neutral-800">
-          <div>
-            <label className="block text-sm font-medium text-neutral-400 mb-2">Name</label>
-            <input type="text" className="w-full px-4 py-3 rounded-xl bg-neutral-950 border border-neutral-800 focus:border-brand/50 focus:outline-none text-white" placeholder="John Doe" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-neutral-400 mb-2">Email</label>
-            <input type="email" className="w-full px-4 py-3 rounded-xl bg-neutral-950 border border-neutral-800 focus:border-brand/50 focus:outline-none text-white" placeholder="john@example.com" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-neutral-400 mb-2">Message</label>
-            <textarea rows={4} className="w-full px-4 py-3 rounded-xl bg-neutral-950 border border-neutral-800 focus:border-brand/50 focus:outline-none text-white" placeholder="How can we help?"></textarea>
-          </div>
-          <button type="button" className="w-full px-6 py-3 rounded-xl bg-white text-black font-semibold hover:bg-neutral-200 transition-colors">
-            Send Message
-          </button>
-        </form>
+        
       </div>
     </div>
   );

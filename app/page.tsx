@@ -40,8 +40,6 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium text-brand-light"
           >
-            <Sparkles className="w-4 h-4" />
-            <span>Registration for 2026 Batch is now open!</span>
           </motion.div>
           
           <motion.h1
@@ -50,7 +48,7 @@ export default function Home() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-br from-white to-neutral-400 text-transparent bg-clip-text pb-2"
           >
-            <span className="block text-2xl md:text-3xl text-gradient-brand mb-2">Mukesh Patel School of Technology Management's Technical and Research Cell</span>
+            <span className="block text-2xl md:text-3xl text-gradient-brand mb-2">Student's Council's Technical and Research Cell</span>
             presents <br className="hidden md:block" />
             <span className="text-brand-dark">Internship Fair 2026</span>
           </motion.h1>

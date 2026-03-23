@@ -9,6 +9,11 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Internship Fair 2026 - MPSTME TRC",
   description: "Mukesh Patel School of Technology Management's Technical and Research Cell present Internship Fair 2026.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

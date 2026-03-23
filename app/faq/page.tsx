@@ -4,11 +4,11 @@ export default function FAQ() {
   const faqs = [
     {
       q: "Who is eligible to participate?",
-      a: "All currently enrolled students in their pre-final and final years are eligible to participate, depending on the specific company requirements listed in their role descriptions.",
+      a: "All NMIMS students are eligible to participate, depending on the specific company requirements listed in their role descriptions.",
     },
     {
       q: "How do I apply for a role?",
-      a: "Navigate to the Companies section, select a company, and click the 'Apply Now' button on the specific role you are interested in. This will redirect you to the official application portal.",
+      a: "Navigate to the Companies section, select a company, and click the 'Apply Now' button on the specific role you are interested in. This will redirect you to the official application form.",
     },
     {
       q: "Can I apply to multiple companies?",
@@ -16,7 +16,11 @@ export default function FAQ() {
     },
     {
       q: "Will the interviews be on-campus or online?",
-      a: "Interview modes vary by company. Most first-round assessments will be conducted online, while subsequent technical and HR rounds may be either on-campus or virtual. Please check the timeline for specifics.",
+      a: "Interview modes vary by company. Check the company details to know more.",
+    },
+    {
+      q: "What should I bring during the Interviews?",
+      a: "Candidates must be dressed in formals and must bring their CV along with them for the interviews.",
     },
   ];
 
