@@ -29,7 +29,7 @@ export const contactInfo = {
   socialsTitle: "Stay tuned for updates",
   socials: [
     { label: "Instagram", href: "https://www.instagram.com/trc.mpstme/" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/company/technical-and-research-cell/posts/?feedView=all" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/technical-and-research-cell/" },
     { label: "WhatsApp", href: "https://chat.whatsapp.com/CNzFOm1sBRr3ZsywLce5Rz?mode=gi_t" },
   ],
 };
