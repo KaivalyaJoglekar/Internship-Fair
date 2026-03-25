@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #000000;
+  --color-foreground: #ededed;
+  --color-brand: #d60f18;
+  --color-brand-light: #ff3b45;
+  --color-brand-dark: #a30b12;
+}
+
+@utility glass {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+@utility text-gradient-brand {
+  @apply bg-gradient-to-r from-brand to-brand-light bg-clip-text text-transparent;
+}
+
+@utility bg-gradient-brand {
+  @apply bg-gradient-to-r from-brand to-brand-light;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.9) 0.6px, transparent 0.8px),
+    radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.8) 0.5px, transparent 0.75px),
+    radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.7) 0.55px, transparent 0.8px),
+    radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.75) 0.6px, transparent 0.85px);
+  background-size: 130px 130px, 170px 170px, 150px 150px, 190px 190px;
+  mix-blend-mode: soft-light;
+}

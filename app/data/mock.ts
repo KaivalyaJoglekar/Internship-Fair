@@ -1,0 +1,234 @@
+export interface Company {
+  id: string;
+  name: string;
+  logo: string;
+  industry: string;
+  shortDescription: string;
+  roles: Role[];
+}
+
+export interface Role {
+  id: string;
+  title: string;
+  deadline: string;
+  jdPdf: string;
+  applyLink: string;
+  stipend: string;
+}
+
+export const mockCompanies: Company[] = [
+  {
+    id: "rudra-cybersecurity",
+    name: "RUDRA CyberSecurity",
+    logo: "/logos/RUDRA CyberSecurity.png",
+    industry: "Cybersecurity",
+    shortDescription: "Core cybersecurity internship opportunity with engineering-focused exposure.",
+    roles: [
+      {
+        id: "cyber-security-engineer-intern",
+        title: "Cyber Security Engineer Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/RUDRA%20-%20Cyber%20Security%20Engineer.pdf",
+        applyLink: "https://forms.gle/pjawz47RDUbNVeKc7",
+        stipend: "₹10,000 / month"
+      }
+    ]
+  },
+  
+  {
+    id: "galaxy-homeautomation",
+    name: "Galaxy HomeAutomation",
+    logo: "/logos/Galaxy HomeAutomation.png",
+    industry: "IoT & Smart Home",
+    shortDescription: "Internship openings across AI, business growth, marketing, and R&D tracks.",
+    roles: [
+      {
+        id: "ai-intern",
+        title: "AI Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Galaxy%20Home%20Automation%20-%20AI.pdf",
+        applyLink: "https://forms.gle/NAPVe1DnQYgtRH8S9",
+        stipend: "₹10,000 / month"
+      },
+      {
+        id: "business-development-intern",
+        title: "Business Development Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Galaxy%20Home%20Automation%20-%20Business%20development.pdf",
+        applyLink: "https://forms.gle/NAPVe1DnQYgtRH8S9",
+        stipend: "₹10,000 / month"
+      },
+      {
+        id: "digital-marketing-head-intern",
+        title: "Digital Marketing Head Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Galaxy%20HomeAutomation%20-%20Digital%20Marketing%20Head.pdf",
+        applyLink: "https://forms.gle/NAPVe1DnQYgtRH8S9",
+        stipend: "₹10,000 / month"
+      },
+      {
+        id: "research-development-intern",
+        title: "Research and Development Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Galaxy%20HomeAutomation%20-%20Research%20and%20Developement.pdf",
+        applyLink: "https://forms.gle/NAPVe1DnQYgtRH8S9",
+        stipend: "₹10,000 / month"
+      }
+    ]
+  },
+  
+  
+  {
+    id: "stravex",
+    name: "Stravex",
+    logo: "/logos/Stravex.png",
+    industry: "Logistics & Operations Tech",
+    shortDescription: "Internship opportunities in marketing growth and creative media production.",
+    roles: [
+      {
+        id: "graphic-video-editing-intern",
+        title: "Graphic Design and Video Editing Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Stravex%20-%20Graphic%20Design%20and%20Video%20Editing.pdf",
+        applyLink: "https://forms.gle/Jv22WggKqV9kjep59",
+        stipend: "₹5,000 / month"
+      },
+      {
+        id: "marketing-strategy-growth-intern",
+        title: "Marketing Strategy and Growth Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Stravex%20-%20Marketing%20Strategy%20and%20Growth.pdf",
+        applyLink: "https://forms.gle/Jv22WggKqV9kjep59",
+        stipend: "₹10,000 / month"
+      }
+    ]
+  },
+  {
+    id: "expanse-digital",
+    name: "Expanse Digital",
+    logo: "/logos/Expanse Digital.png",
+    industry: "Digital Marketing & Product",
+    shortDescription: "Hiring across design and marketing roles for internship positions.",
+    roles: [
+      {
+        id: "graphic-design-intern",
+        title: "Graphic Design Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Digital%20Expanse%20-%20Graphic%20Design.pdf",
+        applyLink: "https://forms.gle/dJzoayUCMAgNeZLb6",
+        stipend: "₹10,000 / month"
+      },
+      {
+        id: "performance-marketing-intern",
+        title: "Performance Marketing Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Digital%20Expanse%20-%20Performance%20Marketing.pdf",
+        applyLink: "https://forms.gle/dJzoayUCMAgNeZLb6",
+        stipend: "₹10,000 / month"
+      },
+      {
+        id: "social-media-marketing-intern",
+        title: "Social Media Marketing Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Digital%20Expanse%20-%20Social%20Media%20Marketing.pdf",
+        applyLink: "https://forms.gle/dJzoayUCMAgNeZLb6",
+        stipend: "₹10,000 / month"
+      },
+      {
+        id: "video-editor-intern",
+        title: "Video Editor Intern",
+        deadline: "29 March, 2026", 
+        jdPdf: "/Job%20Description/Digital%20Expanse%20-%20Video%20Editor.pdf",
+        applyLink: "https://forms.gle/dJzoayUCMAgNeZLb6",
+        stipend: "₹10,000 / month"
+      }
+    ]
+  },
+  
+  /*
+  {
+    id: "florencia-paris",
+    name: "Florencia Paris",
+    logo: "/logos/Florencia Paris.png",
+    industry: "Luxury Retail",
+    shortDescription: "Social media focused internship opportunity in fashion and retail.",
+    roles: [
+      {
+        id: "social-media-intern",
+        title: "Social Media Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Florencia%20Paris%20-%20Social%20Media.pdf",
+        applyLink: "#",
+        stipend: "₹24,000 / month"
+      }
+    ]
+  },
+  */
+  /*
+  
+  /*
+  {
+    id: "zency",
+    name: "Zency",
+    logo: "/logos/Zency.png",
+    industry: "SaaS",
+    shortDescription: "Content marketing internship for brand communication and growth campaigns.",
+    roles: [
+      {
+        id: "content-marketing-intern",
+        title: "Content Marketing Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Zency%20-%20Content%20Marketing.pdf",
+        applyLink: "#",
+        stipend: "₹27,000 / month"
+      }
+    ]
+  }
+  */
+ /*
+  {
+    id: "we-matter",
+    name: "We Matter",
+    logo: "/logos/We Matter.png",
+    industry: "Technology & Software",
+    shortDescription: "Internships focused on software development and product engineering in mission-driven environments.",
+    roles: [
+      {
+        id: "software-developer-intern",
+        title: "Software Developer Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/WE%20MATTER%20-%20Software%20Developer.pdf",
+        applyLink: "https://forms.gle/exampleSoftwareDev",
+        stipend: "₹25,000 / month"
+      }
+    ]
+  }
+    */
+   /*
+{
+    id: "secmark",
+    name: "SecMark",
+    logo: "/logos/SecMark - Logo.png",
+    industry: "Digital Marketing & Business Development",
+    shortDescription: "Internship opportunities in digital marketing and business development roles.",
+    roles: [
+      {
+        id: "digital-marketing-intern",
+        title: "Digital Marketing Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/SecMark%20-%20Digital%20Marketing.pdf",
+        applyLink: "#",
+        stipend: "₹10,000 / month"
+      },
+      {
+        id: "business-development-intern",
+        title: "Business Development Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/SecMark%20-%20Business%20Development.pdf",
+        applyLink: "#",
+        stipend: "₹10,000 / month"
+      }
+    ]
+  }
+    */
+];
