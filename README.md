@@ -38,7 +38,7 @@ app/
 	faq/
 		page.tsx          # redirects to /#faq
 	data/
-		mock.ts
+		companyCardDetails.ts
 	globals.css
 	layout.tsx
 	page.tsx

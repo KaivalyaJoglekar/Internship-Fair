@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useMemo } from "react";
-import { mockCompanies } from "./data/mock";
+import { mockCompanies } from "./data/companyCardDetails";
 import { ArrowRight, Sparkles, Search } from "lucide-react";
 import FaqList from "./contact/FaqList";
 import ContactCards from "./contact/ContactCards";

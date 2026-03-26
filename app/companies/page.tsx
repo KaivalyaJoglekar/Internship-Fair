@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Building2, BriefcaseBusiness, CalendarDays, ExternalLink, FileText, Search } from "lucide-react";
-import { mockCompanies } from "../data/mock";
+import { mockCompanies } from "../data/companyCardDetails";
 
 export default function CompaniesPage() {
   const [selectedRoleByCompany, setSelectedRoleByCompany] = useState<Record<string, number>>({});

@@ -214,6 +214,25 @@ export const mockCompanies: Company[] = [
     ]
   },
   
+  {
+    id: "hnt",
+    name: "HNT",
+    logo: "/logos/HnT Foods - Logo.png",
+    industry: "Food & Beverage",
+    shortDescription: "Internship opportunity in sales and business development for a fast-growing food brand.",
+    roles: [
+      {
+        id: "sales-business-development-intern",
+        title: "Sales & Business Development Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/HnT%20Foods%20-%20Sales%20%26%20Business%20Development.pdf",
+        applyLink: "https://forms.gle/LvdJFVgunwKfpJ9X8",
+        stipend: "₹5,000 / month"
+      }
+    ]
+  },
+  
+  
   /*
   {
     id: "florencia-paris",
