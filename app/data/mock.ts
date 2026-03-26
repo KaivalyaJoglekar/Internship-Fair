@@ -163,6 +163,56 @@ export const mockCompanies: Company[] = [
       }
     ]
   },
+  {
+    id: "we-matter",
+    name: "WE MATTER",
+    logo: "/logos/WE MATTER.png",
+    industry: "Technology & Software",
+    shortDescription: "Internships focused on software development and product engineering in mission-driven environments.",
+    roles: [
+      {
+        id: "software-developer-intern",
+        title: "Software Developer Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/WE%20MATTER%20-%20Software%20Developer.pdf",
+        applyLink: "https://forms.gle/VeCYLBbEwnDquLKN7",
+        stipend: "₹10,000 / month"
+      }
+    ]
+  },
+  {
+    id: "kreare",
+    name: "Kreare",
+    logo: "/logos/Kreare - Logo.png",
+    industry: "Creative & Business Services",
+    shortDescription: "Openings across design, animation, and business development internship tracks.",
+    roles: [
+      {
+        id: "graphic-design-intern",
+        title: "Graphic Design Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Kreare%20-%20Graphic%20Design.pdf",
+        applyLink: "https://forms.gle/KSS8vbrkVL6VTKLp6",
+        stipend: "₹5,000 / month"
+      },
+      {
+        id: "motion-graphics-intern",
+        title: "Motion Graphics Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Kreare%20-%20Motion%20Graphics.pdf",
+        applyLink: "https://forms.gle/KSS8vbrkVL6VTKLp6",
+        stipend: "₹5,000 / month"
+      },
+      {
+        id: "sales-business-development-intern",
+        title: "Sales & Business Development Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Kreare%20-%20Sales%20%26%20Business%20Development.pdf",
+        applyLink: "https://forms.gle/KSS8vbrkVL6VTKLp6",
+        stipend: "₹5,000 / month"
+      }
+    ]
+  },
   
   /*
   {
@@ -215,7 +265,7 @@ export const mockCompanies: Company[] = [
         deadline: "29 March, 2026",
         jdPdf: "/Job%20Description/WE%20MATTER%20-%20Software%20Developer.pdf",
         applyLink: "https://forms.gle/exampleSoftwareDev",
-        stipend: "₹25,000 / month"
+        stipend: "₹10,000 / month"
       }
     ]
   }
