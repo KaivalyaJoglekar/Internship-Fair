@@ -150,7 +150,7 @@ export const mockCompanies: Company[] = [
     id: "zency",
     name: "Zency",
     logo: "/logos/Zency.png",
-    industry: "Contrnt Marketing",
+    industry: "Content Marketing",
     shortDescription: "Content marketing internship for brand communication and growth campaigns.",
     roles: [
       {
