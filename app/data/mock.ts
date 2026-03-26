@@ -145,6 +145,25 @@ export const mockCompanies: Company[] = [
     ]
   },
   
+  
+  {
+    id: "zency",
+    name: "Zency",
+    logo: "/logos/Zency.png",
+    industry: "Contrnt Marketing",
+    shortDescription: "Content marketing internship for brand communication and growth campaigns.",
+    roles: [
+      {
+        id: "content-marketing-intern",
+        title: "Content Marketing Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Zency%20-%20Content%20Marketing.pdf",
+        applyLink: "https://forms.gle/dVbZFuNv7dRhRG7Y9",
+        stipend: "Unpaid (Learning Internship)"
+      }
+    ]
+  },
+  
   /*
   {
     id: "florencia-paris",
@@ -162,10 +181,7 @@ export const mockCompanies: Company[] = [
         stipend: "₹24,000 / month"
       }
     ]
-  },
-  */
-  /*
-  
+  }
   /*
   {
     id: "zency",
