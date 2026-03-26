@@ -97,7 +97,7 @@ export default function Home() {
             transition={{ delay: 0.15 }}
             className="mx-auto max-w-2xl text-base leading-relaxed text-neutral-300 md:text-lg"
           >
-            One platform to discover high-impact internships, understand role expectations, and connect with top companies hiring this season.
+           Discover top internships, explore roles in detail, and apply seamlessly, all in one place.
           </motion.p>
 
           <motion.div
