@@ -308,7 +308,7 @@ export const mockCompanies: Company[] = [
     ]
   },
 
-  /*
+  
   {
     id: "florencia-paris",
     name: "Florencia Paris",
@@ -321,10 +321,10 @@ export const mockCompanies: Company[] = [
         title: "Social Media Intern",
         deadline: "29 March, 2026",
         jdPdf: "/Job%20Description/Florencia%20Paris%20-%20Social%20Media.pdf",
-        applyLink: "#",
-        stipend: "₹24,000 / month"
+        applyLink: "forms.gle/NWNZonUEaxUdamBm8",
+        stipend: "₹6,000- ₹10,000 / month"
       }
     ]
   }
-  */
+  
 ];
