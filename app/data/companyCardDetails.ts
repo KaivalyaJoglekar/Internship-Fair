@@ -257,7 +257,7 @@ export const mockCompanies: Company[] = [
     roles: [
       {
         id: "digital-marketing-intern",
-        title: "Digital /Users/kaivalyajoglekar/Downloads/Vighnesh INC - Logo.png Marketing Intern",
+        title: "Digital  Marketing Intern",
         deadline: "29 March, 2026",
         jdPdf: "/Job%20Description/SecMark%20-%20Digital%20Marketing.pdf",
         applyLink: "https://forms.gle/Pje6xx1cWrbUPBVB7",
