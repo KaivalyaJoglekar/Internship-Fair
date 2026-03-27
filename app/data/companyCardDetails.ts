@@ -304,6 +304,14 @@ export const mockCompanies: Company[] = [
         jdPdf: "/Job%20Description/Vighnesh%20INC%20-%20All%20Job%20Descriptions.pdf",
         applyLink: "http://forms.gle/HAe1me3onP54ZzyJ9",
         stipend: "Up to ₹8,000 / month"
+      },
+      {
+        id: "software-analyst",
+        title: "Software Analyst",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Vighnesh%20INC%20-%20All%20Job%20Descriptions.pdf",
+        applyLink: "http://forms.gle/HAe1me3onP54ZzyJ9",
+        stipend: "Up to ₹8,000 / month"
       }
     ]
   },
