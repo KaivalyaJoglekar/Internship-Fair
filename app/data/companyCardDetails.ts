@@ -257,7 +257,7 @@ export const mockCompanies: Company[] = [
     roles: [
       {
         id: "digital-marketing-intern",
-        title: "Digital  Marketing Intern",
+        title: "Digital /Users/kaivalyajoglekar/Downloads/Vighnesh INC - Logo.png Marketing Intern",
         deadline: "29 March, 2026",
         jdPdf: "/Job%20Description/SecMark%20-%20Digital%20Marketing.pdf",
         applyLink: "https://forms.gle/Pje6xx1cWrbUPBVB7",
@@ -270,6 +270,40 @@ export const mockCompanies: Company[] = [
         jdPdf: "/Job%20Description/SecMark%20-%20Business%20Development.pdf",
         applyLink: "https://forms.gle/Pje6xx1cWrbUPBVB7",
         stipend: "₹5,000 / month"
+      }
+    ]
+  },
+
+  {
+    id: "vignesh-inc",
+    name: "Vignesh Inc",
+    logo: "/logos/Vighnesh INC - Logo.png",
+    industry: "XR, AI & Creative Technology",
+    shortDescription: "Internship openings across Unity/AR/VR development, CV/ML research, and creative leadership.",
+    roles: [
+      {
+        id: "unity-ar-vr-developer-intern",
+        title: "Unity/AR/VR Developer Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Vighnesh%20INC%20-%20All%20Job%20Descriptions.pdf",
+        applyLink: "http://forms.gle/HAe1me3onP54ZzyJ9",
+        stipend: "Up to ₹8,000 / month"
+      },
+      {
+        id: "cv-ml-research-intern",
+        title: "CV/ML Research Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Vighnesh%20INC%20-%20All%20Job%20Descriptions.pdf",
+        applyLink: "http://forms.gle/HAe1me3onP54ZzyJ9",
+        stipend: "Up to ₹8,000 / month"
+      },
+      {
+        id: "creative-lead",
+        title: "Creative Lead",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Vighnesh%20INC%20-%20All%20Job%20Descriptions.pdf",
+        applyLink: "http://forms.gle/HAe1me3onP54ZzyJ9",
+        stipend: "Up to ₹8,000 / month"
       }
     ]
   },
