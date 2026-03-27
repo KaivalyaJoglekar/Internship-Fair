@@ -321,7 +321,7 @@ export const mockCompanies: Company[] = [
         title: "Social Media Intern",
         deadline: "29 March, 2026",
         jdPdf: "/Job%20Description/Florencia%20Paris%20-%20Social%20Media.pdf",
-        applyLink: "forms.gle/NWNZonUEaxUdamBm8",
+        applyLink: "https://forms.gle/NWNZonUEaxUdamBm8",
         stipend: "₹6,000- ₹10,000 / month"
       }
     ]
