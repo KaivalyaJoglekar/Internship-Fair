@@ -153,7 +153,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {filteredCompanies.map((company) => (
-            <Link key={company.id} href="/companies">
+            <Link key={company.id} href={`/companies#${company.id}`}>
               <motion.div
                 whileHover={{ y: -6 }}
                 className="group flex flex-col h-full p-8 rounded-3xl bg-neutral-900/50 backdrop-blur-sm border border-white/10 hover:border-brand/40 hover:bg-neutral-900/70 hover:shadow-[0_16px_35px_rgba(214,15,24,0.12)] transition-all duration-300 cursor-pointer"

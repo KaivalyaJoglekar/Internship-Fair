@@ -71,10 +71,11 @@ export default function CompaniesPage() {
           return (
             <motion.article
               key={company.id}
+              id={company.id}
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.07 }}
-              className="group flex flex-col overflow-hidden rounded-3xl border border-white/12 bg-black/80 text-white shadow-[0_16px_35px_rgba(0,0,0,0.45)] transition-colors duration-300 hover:border-red-500/70"
+              className="group scroll-mt-28 flex flex-col overflow-hidden rounded-3xl border border-white/12 bg-black/80 text-white shadow-[0_16px_35px_rgba(0,0,0,0.45)] transition-colors duration-300 hover:border-red-500/70"
             >
               <div className="p-6 pb-4">
                 <div className="mb-4 flex items-start justify-between gap-4">

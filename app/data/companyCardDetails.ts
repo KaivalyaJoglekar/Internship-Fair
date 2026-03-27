@@ -231,6 +231,23 @@ export const mockCompanies: Company[] = [
       }
     ]
   },
+  {
+    id: "audix",
+    name: "Audix",
+    logo: "/logos/Audix - Logo.png",
+    industry: "Business Services",
+    shortDescription: "Internship opening in business development for growth and partnerships.",
+    roles: [
+      {
+        id: "business-development-associate",
+        title: "Business Development Associate",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/Audix%20-%20Business%20Development%20Associate.pdf",
+        applyLink: "https://forms.gle/hiNj2ir63KWDnchj6",
+        stipend: "₹10,000 - ₹15,000 / month"
+      }
+    ]
+  },
   
   
   /*
