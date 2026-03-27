@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Building2, BriefcaseBusiness, CalendarDays, ExternalLink, FileText, Search } from "lucide-react";
@@ -9,6 +9,25 @@ import { mockCompanies } from "../data/companyCardDetails";
 export default function CompaniesPage() {
   const [selectedRoleByCompany, setSelectedRoleByCompany] = useState<Record<string, number>>({});
   const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const rawHash = window.location.hash;
+    if (!rawHash || rawHash.indexOf("#", 1) === -1) return;
+
+    const fragments = rawHash.split("#").filter(Boolean);
+    const normalized = fragments[fragments.length - 1];
+    if (!normalized) return;
+
+    const nextUrl = `${window.location.pathname}#${normalized}`;
+    window.history.replaceState(null, "", nextUrl);
+
+    const target = document.getElementById(normalized);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);
 
   const parseStipendAmount = (stipend: string) => {
     const numeric = stipend.replace(/[^\d]/g, "");

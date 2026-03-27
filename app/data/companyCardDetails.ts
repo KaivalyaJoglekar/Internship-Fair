@@ -248,8 +248,32 @@ export const mockCompanies: Company[] = [
       }
     ]
   },
-  
-  
+  {
+    id: "secmark",
+    name: "SecMark",
+    logo: "/logos/SecMark - Logo.png",
+    industry: "Digital Marketing & Business Development",
+    shortDescription: "Internship opportunities in digital marketing and business development roles.",
+    roles: [
+      {
+        id: "digital-marketing-intern",
+        title: "Digital  Marketing Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/SecMark%20-%20Digital%20Marketing.pdf",
+        applyLink: "https://forms.gle/Pje6xx1cWrbUPBVB7",
+        stipend: "₹5,000 / month"
+      },
+      {
+        id: "business-development-intern",
+        title: "Business Development Intern",
+        deadline: "29 March, 2026",
+        jdPdf: "/Job%20Description/SecMark%20-%20Business%20Development.pdf",
+        applyLink: "https://forms.gle/Pje6xx1cWrbUPBVB7",
+        stipend: "₹5,000 / month"
+      }
+    ]
+  },
+
   /*
   {
     id: "florencia-paris",
@@ -268,69 +292,5 @@ export const mockCompanies: Company[] = [
       }
     ]
   }
-  /*
-  {
-    id: "zency",
-    name: "Zency",
-    logo: "/logos/Zency.png",
-    industry: "SaaS",
-    shortDescription: "Content marketing internship for brand communication and growth campaigns.",
-    roles: [
-      {
-        id: "content-marketing-intern",
-        title: "Content Marketing Intern",
-        deadline: "29 March, 2026",
-        jdPdf: "/Job%20Description/Zency%20-%20Content%20Marketing.pdf",
-        applyLink: "#",
-        stipend: "₹27,000 / month"
-      }
-    ]
-  }
   */
- /*
-  {
-    id: "we-matter",
-    name: "We Matter",
-    logo: "/logos/We Matter.png",
-    industry: "Technology & Software",
-    shortDescription: "Internships focused on software development and product engineering in mission-driven environments.",
-    roles: [
-      {
-        id: "software-developer-intern",
-        title: "Software Developer Intern",
-        deadline: "29 March, 2026",
-        jdPdf: "/Job%20Description/WE%20MATTER%20-%20Software%20Developer.pdf",
-        applyLink: "https://forms.gle/exampleSoftwareDev",
-        stipend: "₹10,000 / month"
-      }
-    ]
-  }
-    */
-   /*
-{
-    id: "secmark",
-    name: "SecMark",
-    logo: "/logos/SecMark - Logo.png",
-    industry: "Digital Marketing & Business Development",
-    shortDescription: "Internship opportunities in digital marketing and business development roles.",
-    roles: [
-      {
-        id: "digital-marketing-intern",
-        title: "Digital Marketing Intern",
-        deadline: "29 March, 2026",
-        jdPdf: "/Job%20Description/SecMark%20-%20Digital%20Marketing.pdf",
-        applyLink: "#",
-        stipend: "₹10,000 / month"
-      },
-      {
-        id: "business-development-intern",
-        title: "Business Development Intern",
-        deadline: "29 March, 2026",
-        jdPdf: "/Job%20Description/SecMark%20-%20Business%20Development.pdf",
-        applyLink: "#",
-        stipend: "₹10,000 / month"
-      }
-    ]
-  }
-    */
 ];
