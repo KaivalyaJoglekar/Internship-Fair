@@ -8,8 +8,56 @@ import { mockCompanies } from "../data/companyCardDetails";
 import DeadlineCountdown from "../components/DeadlineCountdown";
 
 export default function CompaniesPage() {
-  const [selectedRoleByCompany, setSelectedRoleByCompany] = useState<Record<string, number>>({});
+  const [selectedRoleByCompany, setSelectedRoleByCompany] = useState<Record<string, string>>({});
   const [searchTerm, setSearchTerm] = useState("");
+  const [roleTypeFilter, setRoleTypeFilter] = useState<"all" | "tech" | "non-tech">("all");
+
+  const techKeywords = [
+    "ai",
+    "ml",
+    "data",
+    "software",
+    "developer",
+    "engineer",
+    "cyber",
+    "security",
+    "cloud",
+    "devops",
+    "full stack",
+    "frontend",
+    "backend",
+    "unity",
+    "ar",
+    "vr",
+    "cv/",
+    "research",
+    "analyst",
+    "iot",
+    "technical",
+    "tech",
+  ];
+
+  const nonTechKeywords = [
+    "business development",
+    "sales",
+    "marketing",
+    "social media",
+    "content",
+    "graphic design",
+    "video editing",
+    "video editor",
+    "creative",
+    "motion graphics",
+    "brand",
+  ];
+
+  const isTechRole = (roleTitle: string) => {
+    const normalized = roleTitle.toLowerCase();
+    if (nonTechKeywords.some((keyword) => normalized.includes(keyword))) {
+      return false;
+    }
+    return techKeywords.some((keyword) => normalized.includes(keyword));
+  };
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -56,11 +104,40 @@ export default function CompaniesPage() {
   };
 
   const filteredCompanies = useMemo(() => {
-    if (!searchTerm.trim()) return mockCompanies;
-    return mockCompanies.filter(company =>
-      company.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  }, [searchTerm]);
+    const normalizedSearch = searchTerm.trim().toLowerCase();
+
+    return mockCompanies
+      .map((company) => {
+        const rolesByType = company.roles.filter((role) => {
+          if (roleTypeFilter === "all") return true;
+          const techRole = isTechRole(role.title);
+          return roleTypeFilter === "tech" ? techRole : !techRole;
+        });
+
+        if (rolesByType.length === 0) return null;
+
+        if (!normalizedSearch) {
+          return { ...company, visibleRoles: rolesByType };
+        }
+
+        const companyMatches = [company.name, company.industry, company.shortDescription]
+          .join(" ")
+          .toLowerCase()
+          .includes(normalizedSearch);
+
+        const roleMatches = rolesByType.filter((role) =>
+          role.title.toLowerCase().includes(normalizedSearch)
+        );
+
+        if (!companyMatches && roleMatches.length === 0) return null;
+
+        return {
+          ...company,
+          visibleRoles: companyMatches ? rolesByType : roleMatches,
+        };
+      })
+      .filter((company): company is (typeof mockCompanies)[number] & { visibleRoles: (typeof mockCompanies)[number]["roles"] } => company !== null);
+  }, [searchTerm, roleTypeFilter]);
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 w-full">
@@ -76,25 +153,50 @@ export default function CompaniesPage() {
           </div>
         </div>
 
-        {/* Search Bar */}
-        <div className="mt-8 max-w-md">
-          <div className="relative">
+        {/* Search and Role-Type Filters */}
+        <div className="mt-8 flex flex-col gap-3 md:flex-row md:items-center">
+          <div className="relative w-full md:max-w-md">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-neutral-400" />
             <input
               type="text"
-              placeholder="Search companies..."
+              placeholder="Search companies or roles..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-10 pr-4 py-3 rounded-xl border border-white/15 bg-black/50 text-white placeholder-neutral-400 focus:outline-none focus:border-brand/50 focus:ring-1 focus:ring-brand/50 transition-all"
             />
+          </div>
+
+          <div className="flex w-full gap-2 md:w-auto">
+            <button
+              type="button"
+              onClick={() => setRoleTypeFilter((prev) => (prev === "tech" ? "all" : "tech"))}
+              className={`rounded-xl border px-4 py-3 text-sm font-semibold transition-colors ${
+                roleTypeFilter === "tech"
+                  ? "border-brand/70 bg-brand/10 text-brand-light"
+                  : "border-white/15 bg-black/50 text-brand-light hover:border-brand/60"
+              }`}
+            >
+              Technical Roles
+            </button>
+            <button
+              type="button"
+              onClick={() => setRoleTypeFilter((prev) => (prev === "non-tech" ? "all" : "non-tech"))}
+              className={`rounded-xl border px-4 py-3 text-sm font-semibold transition-colors ${
+                roleTypeFilter === "non-tech"
+                  ? "border-brand/70 bg-brand/10 text-brand-light"
+                  : "border-white/15 bg-black/50 text-brand-light hover:border-brand/60"
+              }`}
+            >
+              Non-Technical Roles
+            </button>
           </div>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7">
         {filteredCompanies.map((company, i) => {
-          const selectedRoleIndex = selectedRoleByCompany[company.id] ?? 0;
-          const selectedRole = company.roles[selectedRoleIndex] ?? company.roles[0];
+          const selectedRoleId = selectedRoleByCompany[company.id];
+          const selectedRole = company.visibleRoles.find((role) => role.id === selectedRoleId) ?? company.visibleRoles[0];
 
           return (
             <motion.article
@@ -125,7 +227,7 @@ export default function CompaniesPage() {
                       </div>
                     </div>
                   </div>
-                  <span className="shrink-0 rounded-full border border-brand/40 bg-brand/15 px-3 py-1 text-xs font-semibold text-white">{company.roles.length} {company.roles.length === 1 ? "Role" : "Roles"}</span>
+                  <span className="shrink-0 rounded-full border border-brand/40 bg-brand/15 px-3 py-1 text-xs font-semibold text-white">{company.visibleRoles.length} {company.visibleRoles.length === 1 ? "Role" : "Roles"}</span>
                 </div>
 
                 <div className="mb-4 rounded-xl border border-violet-400/35 px-4 py-3">
@@ -137,13 +239,13 @@ export default function CompaniesPage() {
                 </div>
 
                 <div className="mb-4 flex flex-wrap gap-2">
-                  {company.roles.map((role, roleIndex) => (
+                  {company.visibleRoles.map((role) => (
                     <button
                       key={role.id}
                       type="button"
-                      onClick={() => setSelectedRoleByCompany((prev) => ({ ...prev, [company.id]: roleIndex }))}
+                      onClick={() => setSelectedRoleByCompany((prev) => ({ ...prev, [company.id]: role.id }))}
                       className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
-                      selectedRoleIndex === roleIndex
+                      selectedRole?.id === role.id
                         ? "border-brand/70 bg-transparent text-white"
                         : "border-white/15 bg-transparent text-neutral-300 hover:border-brand/70 hover:text-white"
                     }`}
