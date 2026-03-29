@@ -3,8 +3,9 @@
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Building2, BriefcaseBusiness, CalendarDays, ExternalLink, FileText, Search } from "lucide-react";
+import { Building2, BriefcaseBusiness, ExternalLink, FileText, Search } from "lucide-react";
 import { mockCompanies } from "../data/companyCardDetails";
+import DeadlineCountdown from "../components/DeadlineCountdown";
 
 export default function CompaniesPage() {
   const [selectedRoleByCompany, setSelectedRoleByCompany] = useState<Record<string, number>>({});
@@ -64,8 +65,16 @@ export default function CompaniesPage() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 w-full">
       <div className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Participating <span className="text-gradient-brand">Companies</span></h1>
-        <p className="text-neutral-300 text-lg">Browse all internship openings and open role-specific JDs directly from each card.</p>
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-2xl">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Participating <span className="text-gradient-brand">Companies</span></h1>
+            <p className="text-neutral-300 text-lg">Browse all internship openings and open role-specific JDs directly from each card.</p>
+          </div>
+
+          <div className="w-full lg:w-auto lg:min-w-[420px]">
+            <DeadlineCountdown compact className="mx-0 w-full max-w-xl lg:ml-auto" />
+          </div>
+        </div>
 
         {/* Search Bar */}
         <div className="mt-8 max-w-md">
@@ -181,7 +190,7 @@ export default function CompaniesPage() {
                     Apply Now
                     <ExternalLink className="w-4 h-4" />
                   </a>
-                  <p className="mt-2 text-sm font-semibold text-red-500 text-center">Deadline: {selectedRole?.deadline ?? "To be announced"}</p>
+                  <p className="mt-2 text-sm font-semibold text-brand-light text-center">Deadline: {selectedRole?.deadline ?? "To be announced"}</p>
                 </div>
             </motion.article>
           );

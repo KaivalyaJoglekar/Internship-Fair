@@ -27,7 +27,7 @@ export const mockCompanies: Company[] = [
       {
         id: "cyber-security-engineer-intern",
         title: "Cyber Security Engineer Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/RUDRA%20-%20Cyber%20Security%20Engineer.pdf",
         applyLink: "https://forms.gle/pjawz47RDUbNVeKc7",
         stipend: "₹10,000 / month"
@@ -45,7 +45,7 @@ export const mockCompanies: Company[] = [
       {
         id: "ai-intern",
         title: "AI Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Galaxy%20Home%20Automation%20-%20AI.pdf",
         applyLink: "https://forms.gle/NAPVe1DnQYgtRH8S9",
         stipend: "₹10,000 / month"
@@ -53,7 +53,7 @@ export const mockCompanies: Company[] = [
       {
         id: "business-development-intern",
         title: "Business Development Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Galaxy%20Home%20Automation%20-%20Business%20development.pdf",
         applyLink: "https://forms.gle/NAPVe1DnQYgtRH8S9",
         stipend: "₹10,000 / month"
@@ -61,7 +61,7 @@ export const mockCompanies: Company[] = [
       {
         id: "digital-marketing-head-intern",
         title: "Digital Marketing Head Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Galaxy%20HomeAutomation%20-%20Digital%20Marketing%20Head.pdf",
         applyLink: "https://forms.gle/NAPVe1DnQYgtRH8S9",
         stipend: "₹10,000 / month"
@@ -69,7 +69,7 @@ export const mockCompanies: Company[] = [
       {
         id: "research-development-intern",
         title: "Research and Development Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Galaxy%20HomeAutomation%20-%20Research%20and%20Developement.pdf",
         applyLink: "https://forms.gle/NAPVe1DnQYgtRH8S9",
         stipend: "₹10,000 / month"
@@ -88,7 +88,7 @@ export const mockCompanies: Company[] = [
       {
         id: "graphic-video-editing-intern",
         title: "Graphic Design and Video Editing Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Stravex%20-%20Graphic%20Design%20and%20Video%20Editing.pdf",
         applyLink: "https://forms.gle/Jv22WggKqV9kjep59",
         stipend: "₹5,000 / month"
@@ -96,7 +96,7 @@ export const mockCompanies: Company[] = [
       {
         id: "marketing-strategy-growth-intern",
         title: "Marketing Strategy and Growth Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Stravex%20-%20Marketing%20Strategy%20and%20Growth.pdf",
         applyLink: "https://forms.gle/Jv22WggKqV9kjep59",
         stipend: "₹10,000 / month"
@@ -113,7 +113,7 @@ export const mockCompanies: Company[] = [
       {
         id: "graphic-design-intern",
         title: "Graphic Design Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Digital%20Expanse%20-%20Graphic%20Design.pdf",
         applyLink: "https://forms.gle/dJzoayUCMAgNeZLb6",
         stipend: "₹10,000 / month"
@@ -121,7 +121,7 @@ export const mockCompanies: Company[] = [
       {
         id: "performance-marketing-intern",
         title: "Performance Marketing Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Digital%20Expanse%20-%20Performance%20Marketing.pdf",
         applyLink: "https://forms.gle/dJzoayUCMAgNeZLb6",
         stipend: "₹10,000 / month"
@@ -129,7 +129,7 @@ export const mockCompanies: Company[] = [
       {
         id: "social-media-marketing-intern",
         title: "Social Media Marketing Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Digital%20Expanse%20-%20Social%20Media%20Marketing.pdf",
         applyLink: "https://forms.gle/dJzoayUCMAgNeZLb6",
         stipend: "₹10,000 / month"
@@ -137,7 +137,7 @@ export const mockCompanies: Company[] = [
       {
         id: "video-editor-intern",
         title: "Video Editor Intern",
-        deadline: "29 March, 2026", 
+        deadline: "11:00 PM Today", 
         jdPdf: "/Job%20Description/Digital%20Expanse%20-%20Video%20Editor.pdf",
         applyLink: "https://forms.gle/dJzoayUCMAgNeZLb6",
         stipend: "₹10,000 / month"
@@ -156,7 +156,7 @@ export const mockCompanies: Company[] = [
       {
         id: "content-marketing-intern",
         title: "Content Marketing Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Zency%20-%20Content%20Marketing.pdf",
         applyLink: "https://forms.gle/dVbZFuNv7dRhRG7Y9",
         stipend: "Unpaid (Learning Internship)"
@@ -173,7 +173,7 @@ export const mockCompanies: Company[] = [
       {
         id: "software-developer-intern",
         title: "Software Developer Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/WE%20MATTER%20-%20Software%20Developer.pdf",
         applyLink: "https://forms.gle/VeCYLBbEwnDquLKN7",
         stipend: "₹10,000 / month"
@@ -190,7 +190,7 @@ export const mockCompanies: Company[] = [
       {
         id: "graphic-design-intern",
         title: "Graphic Design Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Kreare%20-%20Graphic%20Design.pdf",
         applyLink: "https://forms.gle/KSS8vbrkVL6VTKLp6",
         stipend: "₹5,000 / month"
@@ -198,7 +198,7 @@ export const mockCompanies: Company[] = [
       {
         id: "motion-graphics-intern",
         title: "Motion Graphics Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Kreare%20-%20Motion%20Graphics.pdf",
         applyLink: "https://forms.gle/KSS8vbrkVL6VTKLp6",
         stipend: "₹5,000 / month"
@@ -206,7 +206,7 @@ export const mockCompanies: Company[] = [
       {
         id: "sales-business-development-intern",
         title: "Sales & Business Development Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Kreare%20-%20Sales%20%26%20Business%20Development.pdf",
         applyLink: "https://forms.gle/KSS8vbrkVL6VTKLp6",
         stipend: "₹5,000 / month"
@@ -224,7 +224,7 @@ export const mockCompanies: Company[] = [
       {
         id: "sales-business-development-intern",
         title: "Sales & Business Development Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/HnT%20Foods%20-%20Sales%20%26%20Business%20Development.pdf",
         applyLink: "https://forms.gle/LvdJFVgunwKfpJ9X8",
         stipend: "₹5,000 / month"
@@ -241,7 +241,7 @@ export const mockCompanies: Company[] = [
       {
         id: "business-development-associate",
         title: "Business Development Associate",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Audix%20-%20Business%20Development%20Associate.pdf",
         applyLink: "https://forms.gle/hiNj2ir63KWDnchj6",
         stipend: "₹10,000 - ₹15,000 / month"
@@ -258,7 +258,7 @@ export const mockCompanies: Company[] = [
       {
         id: "digital-marketing-intern",
         title: "Digital  Marketing Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/SecMark%20-%20Digital%20Marketing.pdf",
         applyLink: "https://forms.gle/Pje6xx1cWrbUPBVB7",
         stipend: "₹5,000 / month"
@@ -266,7 +266,7 @@ export const mockCompanies: Company[] = [
       {
         id: "business-development-intern",
         title: "Business Development Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/SecMark%20-%20Business%20Development.pdf",
         applyLink: "https://forms.gle/Pje6xx1cWrbUPBVB7",
         stipend: "₹5,000 / month"
@@ -284,7 +284,7 @@ export const mockCompanies: Company[] = [
       {
         id: "unity-ar-vr-developer-intern",
         title: "Unity/AR/VR Developer Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Vighnesh%20INC%20-%20All%20Job%20Descriptions.pdf",
         applyLink: "http://forms.gle/HAe1me3onP54ZzyJ9",
         stipend: "Up to ₹8,000 / month"
@@ -292,7 +292,7 @@ export const mockCompanies: Company[] = [
       {
         id: "cv-ml-research-intern",
         title: "CV/ML Research Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Vighnesh%20INC%20-%20All%20Job%20Descriptions.pdf",
         applyLink: "http://forms.gle/HAe1me3onP54ZzyJ9",
         stipend: "Up to ₹8,000 / month"
@@ -300,7 +300,7 @@ export const mockCompanies: Company[] = [
       {
         id: "creative-lead",
         title: "Creative Lead",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Vighnesh%20INC%20-%20All%20Job%20Descriptions.pdf",
         applyLink: "http://forms.gle/HAe1me3onP54ZzyJ9",
         stipend: "Up to ₹8,000 / month"
@@ -308,7 +308,7 @@ export const mockCompanies: Company[] = [
       {
         id: "software-analyst",
         title: "Software Analyst",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Vighnesh%20INC%20-%20All%20Job%20Descriptions.pdf",
         applyLink: "http://forms.gle/HAe1me3onP54ZzyJ9",
         stipend: "Up to ₹8,000 / month"
@@ -327,12 +327,31 @@ export const mockCompanies: Company[] = [
       {
         id: "social-media-intern",
         title: "Social Media Intern",
-        deadline: "29 March, 2026",
+        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Florencia%20Paris%20-%20Social%20Media.pdf",
         applyLink: "https://forms.gle/NWNZonUEaxUdamBm8",
         stipend: "₹6,000- ₹10,000 / month"
       }
     ]
-  }
+  },
+
+  /* {
+     id: "nexa-flow-automation",
+     name: "Nexa Flow Automation",
+     logo: "/logos/Nexa Flow Automation.png",
+     industry: "AI & Automation",
+     shortDescription: "AI-focused internship opportunity in intelligent automation solutions.",
+     roles: [
+       {
+         id: "ai-intern",
+         title: "AI Intern",
+         deadline: "11:00 PM Today",
+         jdPdf: "/Job%20Description/NexaFlow%20Automations%20-%20AI%20Intern.pdf",
+         applyLink: "#",
+         stipend: "Performance Based"
+       }
+     ]
+   }
+  */
   
 ];
