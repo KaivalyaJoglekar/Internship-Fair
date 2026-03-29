@@ -335,10 +335,10 @@ export const mockCompanies: Company[] = [
     ]
   },
 
-  /* {
-     id: "nexa-flow-automation",
-     name: "Nexa Flow Automation",
-     logo: "/logos/Nexa Flow Automation.png",
+   {
+     id: "nexaflo-automation",
+     name: "Nexaflo Automation",
+     logo: "/logos/NexaFlo Automations - Logo.png",
      industry: "AI & Automation",
      shortDescription: "AI-focused internship opportunity in intelligent automation solutions.",
      roles: [
@@ -346,12 +346,12 @@ export const mockCompanies: Company[] = [
          id: "ai-intern",
          title: "AI Intern",
          deadline: "11:00 PM Today",
-         jdPdf: "/Job%20Description/NexaFlow%20Automations%20-%20AI%20Intern.pdf",
-         applyLink: "#",
+         jdPdf: "/Job%20Description/NexaFlo%20Automations%20-%20AI%20Intern.pdf",
+         applyLink: "https://forms.gle/DH9hfgDbeQrHn9ZQ6",
          stipend: "Performance Based"
        }
      ]
    }
-  */
+  
   
 ];
