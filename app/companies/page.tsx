@@ -105,6 +105,26 @@ export default function CompaniesPage() {
 
   const filteredCompanies = useMemo(() => {
     const normalizedSearch = searchTerm.trim().toLowerCase();
+    const searchTokens = normalizedSearch.split(/\s+/).filter(Boolean);
+
+    const matchesTokens = (text: string) => {
+      if (searchTokens.length === 0) return true;
+
+      const normalizedText = text.toLowerCase();
+      const words = normalizedText
+        .replace(/[^a-z0-9\s]/g, " ")
+        .split(/\s+/)
+        .filter(Boolean);
+
+      return searchTokens.every((token) => {
+        if (normalizedText.includes(token)) {
+          const exactWordMatch = words.some((word) => word === token);
+          const prefixMatch = words.some((word) => word.startsWith(token));
+          return exactWordMatch || prefixMatch;
+        }
+        return false;
+      });
+    };
 
     return mockCompanies
       .map((company) => {
@@ -116,24 +136,31 @@ export default function CompaniesPage() {
 
         if (rolesByType.length === 0) return null;
 
-        if (!normalizedSearch) {
+        if (searchTokens.length === 0) {
           return { ...company, visibleRoles: rolesByType };
         }
 
-        const companyMatches = [company.name, company.industry, company.shortDescription]
-          .join(" ")
-          .toLowerCase()
-          .includes(normalizedSearch);
+        const companyNameMatches = matchesTokens(company.name.toLowerCase());
 
         const roleMatches = rolesByType.filter((role) =>
-          role.title.toLowerCase().includes(normalizedSearch)
+          matchesTokens(
+            [
+              role.title,
+              role.stipend,
+              role.deadline,
+            ]
+              .join(" ")
+              .toLowerCase()
+          )
         );
 
-        if (!companyMatches && roleMatches.length === 0) return null;
+        if (!companyNameMatches && roleMatches.length === 0) return null;
 
         return {
           ...company,
-          visibleRoles: companyMatches ? rolesByType : roleMatches,
+          visibleRoles: companyNameMatches
+            ? (roleMatches.length > 0 ? roleMatches : rolesByType)
+            : roleMatches,
         };
       })
       .filter((company): company is (typeof mockCompanies)[number] & { visibleRoles: (typeof mockCompanies)[number]["roles"] } => company !== null);
@@ -274,11 +301,19 @@ export default function CompaniesPage() {
                       Open PDF
                     </a>
                   </div>
-                  <iframe
-                    src={`${selectedRole?.jdPdf ?? ""}#toolbar=0&navpanes=0&scrollbar=0`}
-                    title={`${company.name} JD preview`}
-                    className="h-48 w-full bg-black"
-                  />
+                  <a
+                    href={selectedRole?.jdPdf ?? "#"}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="block"
+                    aria-label={`Open ${company.name} JD PDF`}
+                  >
+                    <iframe
+                      src={`${selectedRole?.jdPdf ?? ""}#toolbar=0&navpanes=0&scrollbar=0`}
+                      title={`${company.name} JD preview`}
+                      className="h-48 w-full bg-black pointer-events-none"
+                    />
+                  </a>
                 </div>
               </div>
 
