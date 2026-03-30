@@ -13,18 +13,57 @@ type CountdownState = {
   seconds: number;
 };
 
+type DeadlineTarget = {
+  target: Date | null;
+  label: string;
+};
+
 const DAY = 24 * 60 * 60 * 1000;
 const HOUR = 60 * 60 * 1000;
 const MINUTE = 60 * 1000;
 const SECOND = 1000;
 
-const getTonightDeadline = () => {
-  const target = new Date();
-  target.setHours(23, 0, 0, 0);
-  return target;
+const getActiveDeadline = (): DeadlineTarget => {
+  const now = new Date();
+
+  const todayEightPm = new Date(now);
+  todayEightPm.setHours(20, 0, 0, 0);
+
+  if (now < todayEightPm) {
+    return {
+      target: todayEightPm,
+      label: "Deadline Today - 8:00 PM",
+    };
+  }
+
+  const nexafloDeadline = new Date(now);
+  nexafloDeadline.setDate(nexafloDeadline.getDate() + 1);
+  nexafloDeadline.setHours(12, 0, 0, 0);
+
+  if (now < nexafloDeadline) {
+    return {
+      target: nexafloDeadline,
+      label: "Nexaflo Deadline - Tomorrow 12:00 PM",
+    };
+  }
+
+  return {
+    target: null,
+    label: "All Deadlines Closed",
+  };
 };
 
-const getRemainingTime = (target: Date): CountdownState => {
+const getRemainingTime = (target: Date | null): CountdownState => {
+  if (!target) {
+    return {
+      totalMs: 0,
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    };
+  }
+
   const diff = Math.max(target.getTime() - Date.now(), 0);
 
   const days = Math.floor(diff / DAY);
@@ -49,7 +88,6 @@ type DeadlineCountdownProps = {
 };
 
 export default function DeadlineCountdown({ className, compact = false }: DeadlineCountdownProps) {
-  const deadline = useMemo(() => getTonightDeadline(), []);
   const [remaining, setRemaining] = useState<CountdownState>({
     totalMs: 0,
     days: 0,
@@ -57,22 +95,24 @@ export default function DeadlineCountdown({ className, compact = false }: Deadli
     minutes: 0,
     seconds: 0,
   });
+  const [deadlineLabel, setDeadlineLabel] = useState("Deadline Today - 8:00 PM");
+
+  const refreshCountdown = useMemo(
+    () => () => {
+      const deadline = getActiveDeadline();
+      setDeadlineLabel(deadline.label);
+      setRemaining(getRemainingTime(deadline.target));
+    },
+    []
+  );
 
   useEffect(() => {
-    setRemaining(getRemainingTime(deadline));
+    refreshCountdown();
 
-    const interval = setInterval(() => {
-      setRemaining((previous) => {
-        if (previous.totalMs === 0) {
-          clearInterval(interval);
-          return previous;
-        }
-        return getRemainingTime(deadline);
-      });
-    }, 1000);
+    const interval = setInterval(refreshCountdown, 1000);
 
     return () => clearInterval(interval);
-  }, [deadline]);
+  }, [refreshCountdown]);
 
   const timeBlocks = [
     { label: "Days", value: padTime(remaining.days) },
@@ -91,7 +131,7 @@ export default function DeadlineCountdown({ className, compact = false }: Deadli
       <div className={cn("rounded-2xl border border-white/15 bg-black/45 backdrop-blur-sm", compact ? "p-3.5 sm:p-4.5" : "p-4 sm:p-5")}>
         <div className={cn("flex items-center justify-center gap-2 font-semibold uppercase tracking-[0.18em] text-neutral-200 whitespace-nowrap", compact ? "text-[9px] sm:text-[10px]" : "text-[10px] sm:text-xs")}>
           <Clock3 className="h-4 w-4 text-brand-light" />
-          Deadline Tonight - 11:00 PM
+          {deadlineLabel}
         </div>
 
         <div className={cn(compact ? "mt-3.5 grid grid-cols-4 gap-2" : "mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4")}>

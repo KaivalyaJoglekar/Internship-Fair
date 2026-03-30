@@ -16,7 +16,7 @@ export interface Role {
   stipend: string;
 }
 
-export const mockCompanies: Company[] = [
+const baseCompanies: Company[] = [
   {
     id: "rudra-cybersecurity",
     name: "RUDRA CyberSecurity",
@@ -37,7 +37,7 @@ export const mockCompanies: Company[] = [
   
   {
     id: "galaxy-homeautomation",
-    name: "Galaxy HomeAutomation",
+    name: "Galaxy Home  Automation",
     logo: "/logos/Galaxy HomeAutomation.png",
     industry: "IoT & Smart Home",
     shortDescription: "Internship openings across AI, business growth, marketing, and R&D tracks.",
@@ -355,3 +355,37 @@ export const mockCompanies: Company[] = [
   
   
 ];
+
+const CLOSED_TECH_COMPANY_IDS = new Set([
+  "galaxy-homeautomation",
+  "we-matter",
+  "vignesh-inc",
+]);
+
+const getCompanyDeadlineLabel = (companyId: string): string => {
+  if (companyId === "rudra-cybersecurity") {
+    return "TBD";
+  }
+
+  if (CLOSED_TECH_COMPANY_IDS.has(companyId)) {
+    return "Closed";
+  }
+
+  if (companyId === "nexaflo-automation") {
+    return "Tomorrow, 12:00 PM";
+  }
+
+  return "Today, 8:00 PM";
+};
+
+export const mockCompanies: Company[] = baseCompanies.map((company) => {
+  const deadline = getCompanyDeadlineLabel(company.id);
+
+  return {
+    ...company,
+    roles: company.roles.map((role) => ({
+      ...role,
+      deadline,
+    })),
+  };
+});

@@ -9,8 +9,11 @@ import DeadlineCountdown from "../components/DeadlineCountdown";
 
 export default function CompaniesPage() {
   const [selectedRoleByCompany, setSelectedRoleByCompany] = useState<Record<string, string>>({});
+  const [closedDeadlineNoticeByCompany, setClosedDeadlineNoticeByCompany] = useState<Record<string, boolean>>({});
   const [searchTerm, setSearchTerm] = useState("");
   const [roleTypeFilter, setRoleTypeFilter] = useState<"all" | "tech" | "non-tech">("all");
+
+  const isDeadlineClosed = (deadline?: string) => deadline?.trim().toLowerCase() === "closed";
 
   const techKeywords = [
     "ai",
@@ -224,6 +227,8 @@ export default function CompaniesPage() {
         {filteredCompanies.map((company, i) => {
           const selectedRoleId = selectedRoleByCompany[company.id];
           const selectedRole = company.visibleRoles.find((role) => role.id === selectedRoleId) ?? company.visibleRoles[0];
+          const deadlineClosed = isDeadlineClosed(selectedRole?.deadline);
+          const showClosedNotice = closedDeadlineNoticeByCompany[company.id] === true;
 
           return (
             <motion.article
@@ -270,7 +275,10 @@ export default function CompaniesPage() {
                     <button
                       key={role.id}
                       type="button"
-                      onClick={() => setSelectedRoleByCompany((prev) => ({ ...prev, [company.id]: role.id }))}
+                      onClick={() => {
+                        setSelectedRoleByCompany((prev) => ({ ...prev, [company.id]: role.id }));
+                        setClosedDeadlineNoticeByCompany((prev) => ({ ...prev, [company.id]: false }));
+                      }}
                       className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
                       selectedRole?.id === role.id
                         ? "border-brand/70 bg-transparent text-white"
@@ -320,13 +328,28 @@ export default function CompaniesPage() {
               <div className="px-6 pb-6 mt-auto">
                 <a
                     href={selectedRole?.applyLink ?? "#"}
-                    target="_blank"
-                    rel="noreferrer"
+                    target={deadlineClosed ? undefined : "_blank"}
+                    rel={deadlineClosed ? undefined : "noreferrer"}
+                    onClick={(event) => {
+                      if (!deadlineClosed) {
+                        setClosedDeadlineNoticeByCompany((prev) => ({ ...prev, [company.id]: false }));
+                        return;
+                      }
+
+                      event.preventDefault();
+                      setClosedDeadlineNoticeByCompany((prev) => ({ ...prev, [company.id]: true }));
+                    }}
                     className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-brand px-5 py-3 text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+                    aria-disabled={deadlineClosed}
                   >
                     Apply Now
                     <ExternalLink className="w-4 h-4" />
                   </a>
+                  {showClosedNotice ? (
+                    <p className="mt-2 text-center text-sm font-semibold text-red-300">
+                      The deadline is closed and no more applications will be accepted.
+                    </p>
+                  ) : null}
                   <p className="mt-2 text-sm font-semibold text-brand-light text-center">Deadline: {selectedRole?.deadline ?? "To be announced"}</p>
                 </div>
             </motion.article>
