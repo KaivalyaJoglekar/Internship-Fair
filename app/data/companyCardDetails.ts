@@ -364,7 +364,7 @@ const baseCompanies: Company[] = [
    {
     id: "paryatech",
     name: "ParyaTech",
-    logo: "/logos/ParyaTech logo.jpeg",
+    logo: "/logos/Paryatech logo.jpeg",
     industry: "Technology",
     shortDescription: "Internship opportunities across engineering and product design tracks.",
     roles: [
