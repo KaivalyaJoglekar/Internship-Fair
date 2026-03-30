@@ -349,6 +349,14 @@ const baseCompanies: Company[] = [
          jdPdf: "/Job%20Description/NexaFlo%20Automations%20-%20AI%20Intern.pdf",
          applyLink: "https://forms.gle/DH9hfgDbeQrHn9ZQ6",
          stipend: "Performance Based"
+       },
+       {
+         id: "web-dev-intern",
+         title: "Web Dev Intern",
+         deadline: "11:00 PM Today",
+         jdPdf: "/Job%20Description/NexaFlo%20-%20WebDevIntern.pdf",
+         applyLink: "https://forms.gle/DH9hfgDbeQrHn9ZQ6",
+         stipend: "Performance Based"
        }
      ]
    },
