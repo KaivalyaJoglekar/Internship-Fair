@@ -9,7 +9,7 @@ import DeadlineCountdown from "../components/DeadlineCountdown";
 
 export default function CompaniesPage() {
   const [selectedRoleByCompany, setSelectedRoleByCompany] = useState<Record<string, string>>({});
-  const [closedDeadlineNoticeByCompany, setClosedDeadlineNoticeByCompany] = useState<Record<string, boolean>>({});
+  const [closedDeadlineToast, setClosedDeadlineToast] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [roleTypeFilter, setRoleTypeFilter] = useState<"all" | "tech" | "non-tech">("all");
 
@@ -80,6 +80,16 @@ export default function CompaniesPage() {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, []);
+
+  useEffect(() => {
+    if (!closedDeadlineToast) return;
+
+    const timeoutId = window.setTimeout(() => {
+      setClosedDeadlineToast(null);
+    }, 2600);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [closedDeadlineToast]);
 
   const parseStipendAmount = (stipend: string) => {
     const numeric = stipend.replace(/[^\d]/g, "");
@@ -228,7 +238,6 @@ export default function CompaniesPage() {
           const selectedRoleId = selectedRoleByCompany[company.id];
           const selectedRole = company.visibleRoles.find((role) => role.id === selectedRoleId) ?? company.visibleRoles[0];
           const deadlineClosed = isDeadlineClosed(selectedRole?.deadline);
-          const showClosedNotice = closedDeadlineNoticeByCompany[company.id] === true;
 
           return (
             <motion.article
@@ -277,7 +286,6 @@ export default function CompaniesPage() {
                       type="button"
                       onClick={() => {
                         setSelectedRoleByCompany((prev) => ({ ...prev, [company.id]: role.id }));
-                        setClosedDeadlineNoticeByCompany((prev) => ({ ...prev, [company.id]: false }));
                       }}
                       className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
                       selectedRole?.id === role.id
@@ -331,13 +339,10 @@ export default function CompaniesPage() {
                     target={deadlineClosed ? undefined : "_blank"}
                     rel={deadlineClosed ? undefined : "noreferrer"}
                     onClick={(event) => {
-                      if (!deadlineClosed) {
-                        setClosedDeadlineNoticeByCompany((prev) => ({ ...prev, [company.id]: false }));
-                        return;
-                      }
+                      if (!deadlineClosed) return;
 
                       event.preventDefault();
-                      setClosedDeadlineNoticeByCompany((prev) => ({ ...prev, [company.id]: true }));
+                      setClosedDeadlineToast("Deadline closed. No more applications are being accepted for this role.");
                     }}
                     className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-brand px-5 py-3 text-sm font-semibold text-white hover:opacity-90 transition-opacity"
                     aria-disabled={deadlineClosed}
@@ -345,17 +350,18 @@ export default function CompaniesPage() {
                     Apply Now
                     <ExternalLink className="w-4 h-4" />
                   </a>
-                  {showClosedNotice ? (
-                    <p className="mt-2 text-center text-sm font-semibold text-red-300">
-                      The deadline is closed and no more applications will be accepted.
-                    </p>
-                  ) : null}
                   <p className="mt-2 text-sm font-semibold text-brand-light text-center">Deadline: {selectedRole?.deadline ?? "To be announced"}</p>
                 </div>
             </motion.article>
           );
         })}
       </div>
+
+      {closedDeadlineToast ? (
+        <div className="fixed left-1/2 top-[9.5rem] z-50 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 rounded-xl border border-red-500/40 bg-black/95 px-4 py-3 text-center text-sm font-semibold text-red-400 shadow-2xl backdrop-blur-sm md:top-24 md:w-auto md:min-w-[360px] lg:left-auto lg:right-6 lg:translate-x-0 lg:text-left">
+          {closedDeadlineToast}
+        </div>
+      ) : null}
     </div>
   );
 }

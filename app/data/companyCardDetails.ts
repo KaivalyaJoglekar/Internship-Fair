@@ -351,7 +351,33 @@ const baseCompanies: Company[] = [
          stipend: "Performance Based"
        }
      ]
-   }
+   },
+
+   {
+    id: "paryatech",
+    name: "ParyaTech",
+    logo: "/logos/ParyaTech logo.jpeg",
+    industry: "Technology",
+    shortDescription: "Internship opportunities across engineering and product design tracks.",
+    roles: [
+      {
+        id: "engineering-intern",
+        title: "Engineering Intern",
+        deadline: "11:00 PM Today",
+        jdPdf: "/Job%20Description/ParyaTech%20-%20Engineering%20Intern.pdf",
+        applyLink: "https://forms.gle/",
+        stipend: "₹10,000 / month"
+      },
+      {
+        id: "ui-ux-intern",
+        title: "UI/UX Intern",
+        deadline: "11:00 PM Today",
+        jdPdf: "/Job%20Description/ParyaTech%20-%20UI-UX%20Intern.pdf",
+        applyLink: "https://forms.gle/",
+        stipend: "₹10,000 / month"
+      }
+    ]
+  }
   
   
 ];
@@ -373,6 +399,10 @@ const getCompanyDeadlineLabel = (companyId: string): string => {
 
   if (companyId === "nexaflo-automation") {
     return "Tomorrow, 12:00 PM";
+  }
+
+  if (companyId === "paryatech") {
+    return "31st March, 6:00 PM";
   }
 
   return "Today, 8:00 PM";
