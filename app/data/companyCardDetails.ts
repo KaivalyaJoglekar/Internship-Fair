@@ -10,6 +10,7 @@ export interface Company {
 export interface Role {
   id: string;
   title: string;
+  roleType?: "tech" | "non-tech";
   deadline: string;
   jdPdf: string;
   applyLink: string;
@@ -385,6 +386,60 @@ const baseCompanies: Company[] = [
         stipend: "₹10,000 / month"
       }
     ]
+  },
+  {
+    id: "adbureau-analytics",
+    name: "Adbureau Analytics",
+    logo: "/logos/Adbureau -Logo.png",
+    industry: "AI, Automation & Market Intelligence",
+    shortDescription: "Internship opportunities across AI engineering, automation systems, and growth intelligence roles.",
+    roles: [
+      {
+        id: "ai-outreach-engineer-intern",
+        title: "AI Outreach Engineer",
+        roleType: "tech",
+        deadline: "11:00 PM Today",
+        jdPdf: "/Job%20Description/Adbureau%20-%20AI%20Outreach%20Engineer.pdf",
+        applyLink: "#",
+        stipend: "₹5,000 - ₹25,000 (Performance Based)"
+      },
+      {
+        id: "automation-systems-engineer-intern",
+        title: "Automation & Systems Engineer",
+        roleType: "tech",
+        deadline: "11:00 PM Today",
+        jdPdf: "/Job%20Description/Adbureau%20-%20Automation%20%26%20Systems%20Engineer.pdf",
+        applyLink: "#",
+        stipend: "₹5,000 - ₹25,000 (Performance Based)"
+      },
+      {
+        id: "d2c-market-intelligence-analyst-intern",
+        title: "D2C Market Intelligence Analyst",
+        roleType: "non-tech",
+        deadline: "11:00 PM Today",
+        jdPdf: "/Job%20Description/Adbureau%20-%20D2C%20Market%20Intelligence%20Analyst.pdf",
+        applyLink: "#",
+        stipend: "₹5,000 - ₹25,000 (Performance Based)"
+      },
+      {
+        id: "gtm-research-analyst-intern",
+        title: "GTM Research Analyst",
+        roleType: "non-tech",
+        deadline: "11:00 PM Today",
+        jdPdf: "/Job%20Description/Adbureau%20-%20GTM%20Research%20Analyst.pdf",
+        applyLink: "#",
+        stipend: "₹5,000 - ₹25,000 (Performance Based)"
+      },
+      {
+        id: "lead-data-enrichment-crm-associate-intern",
+        title: "Lead Data Enrichment CRM Associate",
+        roleType: "non-tech",
+        deadline: "11:00 PM Today",
+        jdPdf: "/Job%20Description/Adbureau%20-%20Lead%20Data%20Enrichment%20CRM%20Associate.pdf",
+        applyLink: "#",
+        stipend: "₹5,000 - ₹25,000 (Performance Based)"
+      }
+    ]
   }
   
   
@@ -411,6 +466,10 @@ const getCompanyDeadlineLabel = (companyId: string): string => {
 
   if (companyId === "paryatech") {
     return "31st March, 6:00 PM";
+  }
+
+  if (companyId === "adbureau-analytics") {
+    return "31st March, 9:00 PM";
   }
 
   return "Today, 8:00 PM";

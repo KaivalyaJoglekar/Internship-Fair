@@ -57,7 +57,10 @@ export default function CompaniesPage() {
     "brand",
   ];
 
-  const isTechRole = (roleTitle: string) => {
+  const isTechRole = (roleTitle: string, roleType?: "tech" | "non-tech") => {
+    if (roleType === "tech") return true;
+    if (roleType === "non-tech") return false;
+
     const normalized = roleTitle.toLowerCase();
     if (nonTechKeywords.some((keyword) => normalized.includes(keyword))) {
       return false;
@@ -146,7 +149,7 @@ export default function CompaniesPage() {
       .map((company) => {
         const rolesByType = company.roles.filter((role) => {
           if (roleTypeFilter === "all") return true;
-          const techRole = isTechRole(role.title);
+          const techRole = isTechRole(role.title, role.roleType);
           return roleTypeFilter === "tech" ? techRole : !techRole;
         });
 
