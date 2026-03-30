@@ -23,28 +23,72 @@ const HOUR = 60 * 60 * 1000;
 const MINUTE = 60 * 1000;
 const SECOND = 1000;
 
+const getDayOrdinal = (day: number): string => {
+  if (day % 100 >= 11 && day % 100 <= 13) return `${day}th`;
+
+  switch (day % 10) {
+    case 1:
+      return `${day}st`;
+    case 2:
+      return `${day}nd`;
+    case 3:
+      return `${day}rd`;
+    default:
+      return `${day}th`;
+  }
+};
+
+const formatDeadlineLabel = (date: Date): string => {
+  const month = date.toLocaleString("en-US", { month: "long" });
+  const day = getDayOrdinal(date.getDate());
+  const year = date.getFullYear();
+  const time = date.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+
+  return `${day} ${month} ${year}, ${time}`;
+};
+
+const getDeadlineSequence = (baseDate: Date) => {
+  const dayStart = new Date(baseDate);
+  dayStart.setHours(0, 0, 0, 0);
+
+  const nextDayStart = new Date(dayStart);
+  nextDayStart.setDate(nextDayStart.getDate() + 1);
+
+  const generalDeadline = new Date(dayStart);
+  generalDeadline.setHours(20, 0, 0, 0);
+
+  const nexafloDeadline = new Date(nextDayStart);
+  nexafloDeadline.setHours(12, 0, 0, 0);
+
+  const paryaDeadline = new Date(nextDayStart);
+  paryaDeadline.setHours(18, 0, 0, 0);
+
+  const adbureauDeadline = new Date(nextDayStart);
+  adbureauDeadline.setHours(21, 0, 0, 0);
+
+  return [
+    { target: generalDeadline, label: `Deadline: ${formatDeadlineLabel(generalDeadline)}` },
+    { target: nexafloDeadline, label: `Nexaflo Deadline: ${formatDeadlineLabel(nexafloDeadline)}` },
+    { target: paryaDeadline, label: `ParyaTech Deadline: ${formatDeadlineLabel(paryaDeadline)}` },
+    { target: adbureauDeadline, label: `Adbureau Deadline: ${formatDeadlineLabel(adbureauDeadline)}` },
+  ];
+};
+
 const getActiveDeadline = (): DeadlineTarget => {
   const now = new Date();
 
-  const todayEightPm = new Date(now);
-  todayEightPm.setHours(20, 0, 0, 0);
+  const cycleStart = new Date(now);
+  cycleStart.setHours(0, 0, 0, 0);
 
-  if (now < todayEightPm) {
-    return {
-      target: todayEightPm,
-      label: "Deadline Today - 8:00 PM",
-    };
-  }
+  const sequence = getDeadlineSequence(cycleStart);
+  const active = sequence.find((item) => now < item.target);
 
-  const nexafloDeadline = new Date(now);
-  nexafloDeadline.setDate(nexafloDeadline.getDate() + 1);
-  nexafloDeadline.setHours(12, 0, 0, 0);
-
-  if (now < nexafloDeadline) {
-    return {
-      target: nexafloDeadline,
-      label: "Nexaflo Deadline - Tomorrow 12:00 PM",
-    };
+  if (active) {
+    return active;
   }
 
   return {
@@ -95,7 +139,7 @@ export default function DeadlineCountdown({ className, compact = false }: Deadli
     minutes: 0,
     seconds: 0,
   });
-  const [deadlineLabel, setDeadlineLabel] = useState("Deadline Today - 8:00 PM");
+  const [deadlineLabel, setDeadlineLabel] = useState("Deadline: 30th March 2026, 8:00 PM");
 
   const refreshCountdown = useMemo(
     () => () => {

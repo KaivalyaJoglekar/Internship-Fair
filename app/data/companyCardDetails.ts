@@ -4,6 +4,7 @@ export interface Company {
   logo: string;
   industry: string;
   shortDescription: string;
+  deadline?: string;
   roles: Role[];
 }
 
@@ -24,6 +25,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/RUDRA CyberSecurity.png",
     industry: "Cybersecurity",
     shortDescription: "Core cybersecurity internship opportunity with engineering-focused exposure.",
+    deadline: "30 March, 2026, 8:00 PM",
     roles: [
       {
         id: "cyber-security-engineer-intern",
@@ -42,6 +44,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Galaxy HomeAutomation.png",
     industry: "IoT & Smart Home",
     shortDescription: "Internship openings across AI, business growth, marketing, and R&D tracks.",
+    deadline: "Closed",
     roles: [
       {
         id: "ai-intern",
@@ -85,6 +88,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Stravex.png",
     industry: "Logistics & Operations Tech",
     shortDescription: "Internship opportunities in marketing growth and creative media production.",
+    deadline: "30 March, 2026, 8:00 PM",
     roles: [
       {
         id: "graphic-video-editing-intern",
@@ -110,6 +114,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Expanse Digital.png",
     industry: "Digital Marketing & Product",
     shortDescription: "Hiring across design and marketing roles for internship positions.",
+    deadline: "30 March, 2026, 8:00 PM",
     roles: [
       {
         id: "graphic-design-intern",
@@ -153,6 +158,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Zency.png",
     industry: "Content Marketing",
     shortDescription: "Content marketing internship for brand communication and growth campaigns.",
+    deadline: "30 March, 2026, 8:00 PM",
     roles: [
       {
         id: "content-marketing-intern",
@@ -170,6 +176,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/WE MATTER.png",
     industry: "Technology & Software",
     shortDescription: "Internships focused on software development and product engineering in mission-driven environments.",
+    deadline: "Closed",
     roles: [
       {
         id: "software-developer-intern",
@@ -187,6 +194,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Kreare - Logo.png",
     industry: "Creative & Business Services",
     shortDescription: "Openings across design, animation, and business development internship tracks.",
+    deadline: "30 March, 2026, 8:00 PM",
     roles: [
       {
         id: "graphic-design-intern",
@@ -221,6 +229,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/HnT Foods - Logo.png",
     industry: "Food & Beverage",
     shortDescription: "Internship opportunity in sales and business development for a fast-growing food brand.",
+    deadline: "30 March, 2026, 8:00 PM",
     roles: [
       {
         id: "sales-business-development-intern",
@@ -238,6 +247,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Audix - Logo.png",
     industry: "Business Services",
     shortDescription: "Internship opening in business development for growth and partnerships.",
+    deadline: "30 March, 2026, 8:00 PM",
     roles: [
       {
         id: "business-development-associate",
@@ -255,6 +265,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/SecMark - Logo.png",
     industry: "Digital Marketing & Business Development",
     shortDescription: "Internship opportunities in digital marketing and business development roles.",
+    deadline: "30 March, 2026, 8:00 PM",
     roles: [
       {
         id: "digital-marketing-intern",
@@ -281,6 +292,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Vighnesh INC - Logo.png",
     industry: "XR, AI & Creative Technology",
     shortDescription: "Internship openings across Unity/AR/VR development, CV/ML research, and creative leadership.",
+    deadline: "Closed",
     roles: [
       {
         id: "unity-ar-vr-developer-intern",
@@ -324,6 +336,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Florencia Paris.png",
     industry: "Luxury Retail",
     shortDescription: "Social media focused internship opportunity in fashion and retail.",
+    deadline: "30 March, 2026, 8:00 PM",
     roles: [
       {
         id: "social-media-intern",
@@ -342,6 +355,7 @@ const baseCompanies: Company[] = [
      logo: "/logos/NexaFlo Automations - Logo.png",
      industry: "AI & Automation",
      shortDescription: "AI-focused internship opportunity in intelligent automation solutions.",
+     deadline: "31st March 2026, 12:00 PM",
      roles: [
        {
          id: "ai-intern",
@@ -368,6 +382,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Paryatech logo.jpeg",
     industry: "Technology",
     shortDescription: "Internship opportunities across engineering and product design tracks.",
+    deadline: "31st March 2026, 6:00 PM",
     roles: [
       {
         id: "engineering-intern",
@@ -393,6 +408,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Adbureau -Logo.png",
     industry: "AI, Automation & Market Intelligence",
     shortDescription: "Internship opportunities across AI engineering, automation systems, and growth intelligence roles.",
+    deadline: "31st March 2026, 9:00 PM",
     roles: [
       {
         id: "ai-outreach-engineer-intern",
@@ -400,7 +416,7 @@ const baseCompanies: Company[] = [
         roleType: "tech",
         deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Adbureau%20-%20AI%20Outreach%20Engineer.pdf",
-        applyLink: "#",
+        applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
         stipend: "₹5,000 - ₹25,000 (Performance Based)"
       },
       {
@@ -409,7 +425,7 @@ const baseCompanies: Company[] = [
         roleType: "tech",
         deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Adbureau%20-%20Automation%20%26%20Systems%20Engineer.pdf",
-        applyLink: "#",
+        applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
         stipend: "₹5,000 - ₹25,000 (Performance Based)"
       },
       {
@@ -418,7 +434,7 @@ const baseCompanies: Company[] = [
         roleType: "non-tech",
         deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Adbureau%20-%20D2C%20Market%20Intelligence%20Analyst.pdf",
-        applyLink: "#",
+        applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
         stipend: "₹5,000 - ₹25,000 (Performance Based)"
       },
       {
@@ -427,7 +443,7 @@ const baseCompanies: Company[] = [
         roleType: "non-tech",
         deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Adbureau%20-%20GTM%20Research%20Analyst.pdf",
-        applyLink: "#",
+        applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
         stipend: "₹5,000 - ₹25,000 (Performance Based)"
       },
       {
@@ -436,7 +452,7 @@ const baseCompanies: Company[] = [
         roleType: "non-tech",
         deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Adbureau%20-%20Lead%20Data%20Enrichment%20CRM%20Associate.pdf",
-        applyLink: "#",
+        applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
         stipend: "₹5,000 - ₹25,000 (Performance Based)"
       }
     ]
@@ -444,45 +460,14 @@ const baseCompanies: Company[] = [
   
   
 ];
-
-const CLOSED_TECH_COMPANY_IDS = new Set([
-  "galaxy-homeautomation",
-  "we-matter",
-  "vignesh-inc",
-]);
-
-const getCompanyDeadlineLabel = (companyId: string): string => {
-  if (companyId === "rudra-cybersecurity") {
-    return "TBD";
-  }
-
-  if (CLOSED_TECH_COMPANY_IDS.has(companyId)) {
-    return "Closed";
-  }
-
-  if (companyId === "nexaflo-automation") {
-    return "Tomorrow, 12:00 PM";
-  }
-
-  if (companyId === "paryatech") {
-    return "31st March, 6:00 PM";
-  }
-
-  if (companyId === "adbureau-analytics") {
-    return "31st March, 9:00 PM";
-  }
-
-  return "Today, 8:00 PM";
-};
-
 export const mockCompanies: Company[] = baseCompanies.map((company) => {
-  const deadline = getCompanyDeadlineLabel(company.id);
+  const deadline = company.deadline;
 
   return {
     ...company,
     roles: company.roles.map((role) => ({
       ...role,
-      deadline,
+      deadline: deadline ?? role.deadline,
     })),
   };
 });
