@@ -365,7 +365,7 @@ const baseCompanies: Company[] = [
         title: "Engineering Intern",
         deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/ParyaTech%20-%20Engineering%20Intern.pdf",
-        applyLink: "https://forms.gle/",
+        applyLink: "https://forms.gle/ytR4SfGZa5qF1WQf8",
         stipend: "₹10,000 / month"
       },
       {
@@ -373,7 +373,7 @@ const baseCompanies: Company[] = [
         title: "UI/UX Intern",
         deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/ParyaTech%20-%20UI-UX%20Intern.pdf",
-        applyLink: "https://forms.gle/",
+        applyLink: "https://forms.gle/ytR4SfGZa5qF1WQf8",
         stipend: "₹10,000 / month"
       }
     ]
