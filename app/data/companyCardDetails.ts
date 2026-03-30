@@ -25,7 +25,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/RUDRA CyberSecurity.png",
     industry: "Cybersecurity",
     shortDescription: "Core cybersecurity internship opportunity with engineering-focused exposure.",
-    deadline: "30 March, 2026, 8:00 PM",
+    deadline: "Closed",
     roles: [
       {
         id: "cyber-security-engineer-intern",
@@ -88,7 +88,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Stravex.png",
     industry: "Logistics & Operations Tech",
     shortDescription: "Internship opportunities in marketing growth and creative media production.",
-    deadline: "30 March, 2026, 8:00 PM",
+    deadline: "TBD",
     roles: [
       {
         id: "graphic-video-editing-intern",
@@ -114,7 +114,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Expanse Digital.png",
     industry: "Digital Marketing & Product",
     shortDescription: "Hiring across design and marketing roles for internship positions.",
-    deadline: "30 March, 2026, 8:00 PM",
+    deadline: "Closed",
     roles: [
       {
         id: "graphic-design-intern",
@@ -158,7 +158,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Zency.png",
     industry: "Content Marketing",
     shortDescription: "Content marketing internship for brand communication and growth campaigns.",
-    deadline: "30 March, 2026, 8:00 PM",
+    deadline: "Closed",
     roles: [
       {
         id: "content-marketing-intern",
@@ -194,7 +194,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Kreare - Logo.png",
     industry: "Creative & Business Services",
     shortDescription: "Openings across design, animation, and business development internship tracks.",
-    deadline: "30 March, 2026, 8:00 PM",
+    deadline: "Closed",
     roles: [
       {
         id: "graphic-design-intern",
@@ -229,7 +229,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/HnT Foods - Logo.png",
     industry: "Food & Beverage",
     shortDescription: "Internship opportunity in sales and business development for a fast-growing food brand.",
-    deadline: "30 March, 2026, 8:00 PM",
+    deadline: "Closed",
     roles: [
       {
         id: "sales-business-development-intern",
@@ -247,7 +247,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Audix - Logo.png",
     industry: "Business Services",
     shortDescription: "Internship opening in business development for growth and partnerships.",
-    deadline: "30 March, 2026, 8:00 PM",
+    deadline: "TBD",
     roles: [
       {
         id: "business-development-associate",
@@ -265,7 +265,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/SecMark - Logo.png",
     industry: "Digital Marketing & Business Development",
     shortDescription: "Internship opportunities in digital marketing and business development roles.",
-    deadline: "30 March, 2026, 8:00 PM",
+    deadline: "Closed",
     roles: [
       {
         id: "digital-marketing-intern",
@@ -336,7 +336,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Florencia Paris.png",
     industry: "Luxury Retail",
     shortDescription: "Social media focused internship opportunity in fashion and retail.",
-    deadline: "30 March, 2026, 8:00 PM",
+    deadline: "Closed",
     roles: [
       {
         id: "social-media-intern",
