@@ -25,7 +25,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Paryatech logo.jpeg",
     industry: "Technology",
     shortDescription: "Internship opportunities across engineering and product design tracks.",
-    deadline: "31st March 2026, 7:00 PM",
+    deadline: "Closed",
     roles: [
       {
         id: "engineering-intern",
@@ -50,7 +50,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Adbureau -Logo.png",
     industry: "AI, Automation & Market Intelligence",
     shortDescription: "Internship opportunities across AI engineering, automation systems, and growth intelligence roles.",
-    deadline: "31st March 2026, 7:00 PM",
+    deadline: "Closed",
     roles: [
       {
         id: "ai-outreach-engineer-intern",
@@ -100,7 +100,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/electrorush.png",
     industry: "Healthcare & Laboratories",
     shortDescription: "Internship opportunities across three role tracks at Halewood Laboratories.",
-    deadline: "31st March 2026, 7:00 PM",
+    deadline: "Closed",
     roles: [
       {
         id: "cyber-security-system-software-engineer-intern",
