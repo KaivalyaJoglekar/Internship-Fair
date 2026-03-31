@@ -154,9 +154,15 @@ export default function DeadlineCountdown({ className, compact = false }: Deadli
       className={cn("mx-auto w-full max-w-3xl", className)}
     >
       <div className={cn("rounded-2xl border border-white/15 bg-black/45 backdrop-blur-sm", compact ? "p-3.5 sm:p-4.5" : "p-4 sm:p-5")}>
-        <div className={cn("flex items-center justify-center gap-2 font-semibold uppercase tracking-[0.18em] text-neutral-200 whitespace-nowrap", compact ? "text-[9px] sm:text-[10px]" : "text-[10px] sm:text-xs")}>
-          <Clock3 className="h-4 w-4 text-brand-light" />
-          {deadlineLabel}
+        <div
+          className={cn(
+            "flex w-full min-w-0 flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center font-semibold uppercase leading-snug text-neutral-200",
+            "tracking-[0.12em] sm:tracking-[0.18em]",
+            compact ? "text-[clamp(8px,1.6vw,10px)]" : "text-[clamp(9px,1.4vw,12px)]"
+          )}
+        >
+          <Clock3 className="h-4 w-4 shrink-0 text-brand-light" />
+          <span className="min-w-0 text-pretty wrap-break-word">{deadlineLabel}</span>
         </div>
 
         <div className={cn(compact ? "mt-3.5 grid grid-cols-4 gap-2" : "mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4")}>
