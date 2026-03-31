@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import PerformancePolyfills from "./components/PerformancePolyfills";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} min-h-screen flex flex-col pt-32 selection:bg-gradient-brand/30 selection:text-red-200`}>
+        <PerformancePolyfills />
         <Navbar />
         <main className="flex-1 flex flex-col">
           {children}

@@ -120,6 +120,12 @@ export default function Home() {
             >
               CV Format
             </a>
+            <Link
+              href="/interview-slots"
+              className="w-full sm:w-auto px-8 py-3 rounded-xl bg-white font-semibold text-black hover:bg-neutral-200 transition-all"
+            >
+              View my Slot
+            </Link>
           </motion.div>
         </div>
       </section>
