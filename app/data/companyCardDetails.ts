@@ -24,7 +24,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/RUDRA CyberSecurity.png",
     industry: "Cybersecurity",
     shortDescription: "Core cybersecurity internship opportunity with engineering-focused exposure.",
-    deadline: "31st March 2026, TBD",
+    deadline: "Closed",
     roles: [
       {
         id: "cyber-security-engineer-intern",
@@ -82,7 +82,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Stravex.png",
     industry: "Logistics & Operations Tech",
     shortDescription: "Internship opportunities in marketing growth and creative media production.",
-    deadline: "31st March 2026, TBD",
+    deadline: "Closed",
     roles: [
       {
         id: "graphic-video-editing-intern",
@@ -229,7 +229,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Audix - Logo.png",
     industry: "Business Services",
     shortDescription: "Internship opening in business development for growth and partnerships.",
-    deadline: "TBD",
+    deadline: "Closed",
     roles: [
       {
         id: "business-development-associate",
@@ -329,8 +329,8 @@ const baseCompanies: Company[] = [
      logo: "/logos/NexaFlo Automations - Logo.png",
      industry: "AI & Automation",
      shortDescription: "AI-focused internship opportunity in intelligent automation solutions.",
-    deadline: "31st March 2026, 12:00 PM",
-     roles: [
+    deadline: "Closed",
+    roles: [
        {
          id: "ai-intern",
          title: "AI Intern",
