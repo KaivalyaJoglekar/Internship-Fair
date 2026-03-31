@@ -24,7 +24,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/RUDRA CyberSecurity.png",
     industry: "Cybersecurity",
     shortDescription: "Core cybersecurity internship opportunity with engineering-focused exposure.",
-    deadline: "Closed",
+    deadline: "31st March 2026, TBD",
     roles: [
       {
         id: "cyber-security-engineer-intern",
@@ -82,7 +82,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Stravex.png",
     industry: "Logistics & Operations Tech",
     shortDescription: "Internship opportunities in marketing growth and creative media production.",
-    deadline: "TBD",
+    deadline: "31st March 2026, TBD",
     roles: [
       {
         id: "graphic-video-editing-intern",
@@ -329,7 +329,7 @@ const baseCompanies: Company[] = [
      logo: "/logos/NexaFlo Automations - Logo.png",
      industry: "AI & Automation",
      shortDescription: "AI-focused internship opportunity in intelligent automation solutions.",
-     deadline: "31st March 2026, 12:00 PM",
+    deadline: "31st March 2026, 12:00 PM",
      roles: [
        {
          id: "ai-intern",
@@ -354,7 +354,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Paryatech logo.jpeg",
     industry: "Technology",
     shortDescription: "Internship opportunities across engineering and product design tracks.",
-    deadline: "31st March 2026, 6:00 PM",
+    deadline: "31st March 2026, 7:00 PM",
     roles: [
       {
         id: "engineering-intern",
@@ -379,7 +379,7 @@ const baseCompanies: Company[] = [
     logo: "/logos/Adbureau -Logo.png",
     industry: "AI, Automation & Market Intelligence",
     shortDescription: "Internship opportunities across AI engineering, automation systems, and growth intelligence roles.",
-    deadline: "31st March 2026, 8:00 PM",
+    deadline: "31st March 2026, 7:00 PM",
     roles: [
       {
         id: "ai-outreach-engineer-intern",
@@ -429,28 +429,28 @@ const baseCompanies: Company[] = [
     logo: "/logos/electrorush.png",
     industry: "Healthcare & Laboratories",
     shortDescription: "Internship opportunities across three role tracks at Halewood Laboratories.",
-    deadline: "31st March 2026, 8:00 PM",
+    deadline: "31st March 2026, 7:00 PM",
     roles: [
       {
         id: "cyber-security-system-software-engineer-intern",
         title: "Cyber Security System Software Engineer Intern",
         jdPdf: "/Job%20Description/Halewood%20Laboratories.%20-%20Cybersec.pdf",
         applyLink: "https://forms.gle/iKq3Vwtvxe1FuDN87",
-        stipend: "TBA"
+        stipend: "Performance Based"
       },
       {
         id: "social-media-automation-agentic-ai-engineer-intern",
         title: "Social Media Automation & Agentic AI Engineer Intern",
         jdPdf: "/Job%20Description/Halewood%20Laboratories%20-%20Social%20Media%20%26%20Agentic%20AI%20.pdf",
         applyLink: "https://forms.gle/iKq3Vwtvxe1FuDN87",
-        stipend: "TBA"
+        stipend: "Performance Based"
       },
       {
         id: "e-learning-agentic-ai-automation-engineer-intern",
         title: "E-Learning Agentic AI Automation Engineer Intern",
         jdPdf: "/Job%20Description/Halewood%20Laboratories%20-%20E-learning%20%26%20Agentic%20AI.pdf",
         applyLink: "https://forms.gle/iKq3Vwtvxe1FuDN87",
-        stipend: "TBA"
+        stipend: "Performance Based"
       }
     ]
   }

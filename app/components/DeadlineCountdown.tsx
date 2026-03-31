@@ -51,44 +51,25 @@ const formatDeadlineLabel = (date: Date): string => {
   return `${day} ${month} ${year}, ${time}`;
 };
 
-const getDeadlineSequence = (baseDate: Date) => {
-  const dayStart = new Date(baseDate);
-  dayStart.setHours(0, 0, 0, 0);
-
-  const nextDayStart = new Date(dayStart);
-  nextDayStart.setDate(nextDayStart.getDate() + 1);
-
-  const generalDeadline = new Date(dayStart);
-  generalDeadline.setHours(20, 0, 0, 0);
-
-  const nexafloDeadline = new Date(nextDayStart);
-  nexafloDeadline.setHours(12, 0, 0, 0);
-
-  const paryaDeadline = new Date(nextDayStart);
-  paryaDeadline.setHours(18, 0, 0, 0);
-
-  const adbureauDeadline = new Date(nextDayStart);
-  adbureauDeadline.setHours(21, 0, 0, 0);
-
-  return [
-    { target: generalDeadline, label: `Deadline: ${formatDeadlineLabel(generalDeadline)}` },
-    { target: nexafloDeadline, label: `Nexaflo Deadline: ${formatDeadlineLabel(nexafloDeadline)}` },
-    { target: paryaDeadline, label: `ParyaTech Deadline: ${formatDeadlineLabel(paryaDeadline)}` },
-    { target: adbureauDeadline, label: `Adbureau Deadline: ${formatDeadlineLabel(adbureauDeadline)}` },
-  ];
-};
-
 const getActiveDeadline = (): DeadlineTarget => {
   const now = new Date();
 
-  const cycleStart = new Date(now);
-  cycleStart.setHours(0, 0, 0, 0);
+  // Fixed, one-time schedule for March 31, 2026. This intentionally does not roll over to the next day.
+  const nexafloDeadline = new Date(2026, 2, 31, 12, 0, 0, 0);
+  const sevenPmDeadline = new Date(2026, 2, 31, 19, 0, 0, 0);
 
-  const sequence = getDeadlineSequence(cycleStart);
-  const active = sequence.find((item) => now < item.target);
+  if (now < nexafloDeadline) {
+    return {
+      target: nexafloDeadline,
+      label: `Nexaflo Deadline: ${formatDeadlineLabel(nexafloDeadline)}`,
+    };
+  }
 
-  if (active) {
-    return active;
+  if (now < sevenPmDeadline) {
+    return {
+      target: sevenPmDeadline,
+      label: `ParyaTech, Adbureau & Halewood Deadline: ${formatDeadlineLabel(sevenPmDeadline)}`,
+    };
   }
 
   return {
@@ -139,7 +120,7 @@ export default function DeadlineCountdown({ className, compact = false }: Deadli
     minutes: 0,
     seconds: 0,
   });
-  const [deadlineLabel, setDeadlineLabel] = useState("Deadline: 30th March 2026, 8:00 PM");
+  const [deadlineLabel, setDeadlineLabel] = useState("All Deadlines Closed");
 
   const refreshCountdown = useMemo(
     () => () => {
