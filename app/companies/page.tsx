@@ -1,72 +1,83 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useDeferredValue } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Building2, BriefcaseBusiness, ExternalLink, FileText, Search } from "lucide-react";
 import { mockCompanies } from "../data/companyCardDetails";
 import DeadlineCountdown from "../components/DeadlineCountdown";
 
+const TECH_KEYWORDS = [
+  "ai",
+  "ml",
+  "data",
+  "web dev",
+  "web developer",
+  "web development",
+  "software",
+  "developer",
+  "engineer",
+  "cyber",
+  "security",
+  "cloud",
+  "devops",
+  "full stack",
+  "frontend",
+  "backend",
+  "unity",
+  "ar",
+  "vr",
+  "cv/",
+  "research",
+  "analyst",
+  "iot",
+  "technical",
+  "tech",
+];
+
+const NON_TECH_KEYWORDS = [
+  "business development",
+  "sales",
+  "marketing",
+  "social media",
+  "content",
+  "graphic design",
+  "video editing",
+  "video editor",
+  "creative",
+  "motion graphics",
+  "brand",
+];
+
+const toSearchWords = (text: string) =>
+  text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean);
+
+const matchesSearchTokens = (tokens: string[], words: string[]) =>
+  tokens.every((token) => words.some((word) => word.startsWith(token)));
+
+const isTechRole = (roleTitle: string, roleType?: "tech" | "non-tech") => {
+  if (roleType === "tech") return true;
+  if (roleType === "non-tech") return false;
+
+  const normalized = roleTitle.toLowerCase();
+  if (NON_TECH_KEYWORDS.some((keyword) => normalized.includes(keyword))) {
+    return false;
+  }
+  return TECH_KEYWORDS.some((keyword) => normalized.includes(keyword));
+};
+
 export default function CompaniesPage() {
   const [selectedRoleByCompany, setSelectedRoleByCompany] = useState<Record<string, string>>({});
   const [closedDeadlineToast, setClosedDeadlineToast] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [roleTypeFilter, setRoleTypeFilter] = useState<"all" | "tech" | "non-tech">("all");
+  const deferredSearchTerm = useDeferredValue(searchTerm);
 
   const isDeadlineClosed = (deadline?: string) => deadline?.trim().toLowerCase() === "closed";
-
-  const techKeywords = [
-    "ai",
-    "ml",
-    "data",
-    "web dev",
-    "web developer",
-    "web development",
-    "software",
-    "developer",
-    "engineer",
-    "cyber",
-    "security",
-    "cloud",
-    "devops",
-    "full stack",
-    "frontend",
-    "backend",
-    "unity",
-    "ar",
-    "vr",
-    "cv/",
-    "research",
-    "analyst",
-    "iot",
-    "technical",
-    "tech",
-  ];
-
-  const nonTechKeywords = [
-    "business development",
-    "sales",
-    "marketing",
-    "social media",
-    "content",
-    "graphic design",
-    "video editing",
-    "video editor",
-    "creative",
-    "motion graphics",
-    "brand",
-  ];
-
-  const isTechRole = (roleTitle: string, roleType?: "tech" | "non-tech") => {
-    if (roleType === "tech") return true;
-    if (roleType === "non-tech") return false;
-
-    const normalized = roleTitle.toLowerCase();
-    if (nonTechKeywords.some((keyword) => normalized.includes(keyword))) {
-      return false;
-    }
-    return techKeywords.some((keyword) => normalized.includes(keyword));
-  };
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -122,55 +133,43 @@ export default function CompaniesPage() {
     return `₹${min.toLocaleString("en-IN")} - ₹${max.toLocaleString("en-IN")} / month`;
   };
 
+  const searchableCompanies = useMemo(
+    () =>
+      mockCompanies.map((company) => ({
+        company,
+        companyNameWords: toSearchWords(company.name),
+        searchableRoles: company.roles.map((role) => ({
+          role,
+          isTech: isTechRole(role.title, role.roleType),
+          searchWords: toSearchWords([role.title, role.stipend, company.deadline ?? ""].join(" ")),
+        })),
+      })),
+    []
+  );
+
   const filteredCompanies = useMemo(() => {
-    const normalizedSearch = searchTerm.trim().toLowerCase();
-    const searchTokens = normalizedSearch.split(/\s+/).filter(Boolean);
+    const searchTokens = deferredSearchTerm.trim().toLowerCase().split(/\s+/).filter(Boolean);
 
-    const matchesTokens = (text: string) => {
-      if (searchTokens.length === 0) return true;
-
-      const normalizedText = text.toLowerCase();
-      const words = normalizedText
-        .replace(/[^a-z0-9\s]/g, " ")
-        .split(/\s+/)
-        .filter(Boolean);
-
-      return searchTokens.every((token) => {
-        if (normalizedText.includes(token)) {
-          const exactWordMatch = words.some((word) => word === token);
-          const prefixMatch = words.some((word) => word.startsWith(token));
-          return exactWordMatch || prefixMatch;
-        }
-        return false;
-      });
-    };
-
-    return mockCompanies
-      .map((company) => {
-        const rolesByType = company.roles.filter((role) => {
+    return searchableCompanies
+      .map(({ company, companyNameWords, searchableRoles }) => {
+        const rolesByType = searchableRoles.filter(({ isTech }) => {
           if (roleTypeFilter === "all") return true;
-          const techRole = isTechRole(role.title, role.roleType);
-          return roleTypeFilter === "tech" ? techRole : !techRole;
+          return roleTypeFilter === "tech" ? isTech : !isTech;
         });
 
         if (rolesByType.length === 0) return null;
 
         if (searchTokens.length === 0) {
-          return { ...company, visibleRoles: rolesByType };
+          return {
+            ...company,
+            visibleRoles: rolesByType.map(({ role }) => role),
+          };
         }
 
-        const companyNameMatches = matchesTokens(company.name.toLowerCase());
+        const companyNameMatches = matchesSearchTokens(searchTokens, companyNameWords);
 
-        const roleMatches = rolesByType.filter((role) =>
-          matchesTokens(
-            [
-              role.title,
-              role.stipend,
-              role.deadline,
-            ]
-              .join(" ")
-              .toLowerCase()
-          )
+        const roleMatches = rolesByType.filter(({ searchWords }) =>
+          matchesSearchTokens(searchTokens, searchWords)
         );
 
         if (!companyNameMatches && roleMatches.length === 0) return null;
@@ -178,12 +177,12 @@ export default function CompaniesPage() {
         return {
           ...company,
           visibleRoles: companyNameMatches
-            ? (roleMatches.length > 0 ? roleMatches : rolesByType)
-            : roleMatches,
+            ? (roleMatches.length > 0 ? roleMatches : rolesByType).map(({ role }) => role)
+            : roleMatches.map(({ role }) => role),
         };
       })
       .filter((company): company is (typeof mockCompanies)[number] & { visibleRoles: (typeof mockCompanies)[number]["roles"] } => company !== null);
-  }, [searchTerm, roleTypeFilter]);
+  }, [deferredSearchTerm, roleTypeFilter, searchableCompanies]);
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 w-full">
@@ -243,7 +242,7 @@ export default function CompaniesPage() {
         {filteredCompanies.map((company, i) => {
           const selectedRoleId = selectedRoleByCompany[company.id];
           const selectedRole = company.visibleRoles.find((role) => role.id === selectedRoleId) ?? company.visibleRoles[0];
-          const deadlineClosed = isDeadlineClosed(selectedRole?.deadline);
+          const deadlineClosed = isDeadlineClosed(company.deadline);
 
           return (
             <motion.article
@@ -356,7 +355,7 @@ export default function CompaniesPage() {
                     Apply Now
                     <ExternalLink className="w-4 h-4" />
                   </a>
-                  <p className="mt-2 text-sm font-semibold text-brand-light text-center">Deadline: {selectedRole?.deadline ?? "To be announced"}</p>
+                  <p className="mt-2 text-sm font-semibold text-brand-light text-center">Deadline: {company.deadline ?? "To be announced"}</p>
                 </div>
             </motion.article>
           );

@@ -12,7 +12,6 @@ export interface Role {
   id: string;
   title: string;
   roleType?: "tech" | "non-tech";
-  deadline: string;
   jdPdf: string;
   applyLink: string;
   stipend: string;
@@ -30,7 +29,6 @@ const baseCompanies: Company[] = [
       {
         id: "cyber-security-engineer-intern",
         title: "Cyber Security Engineer Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/RUDRA%20-%20Cyber%20Security%20Engineer.pdf",
         applyLink: "https://forms.gle/pjawz47RDUbNVeKc7",
         stipend: "₹10,000 / month"
@@ -49,7 +47,6 @@ const baseCompanies: Company[] = [
       {
         id: "ai-intern",
         title: "AI Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Galaxy%20Home%20Automation%20-%20AI.pdf",
         applyLink: "https://forms.gle/NAPVe1DnQYgtRH8S9",
         stipend: "₹10,000 / month"
@@ -57,7 +54,6 @@ const baseCompanies: Company[] = [
       {
         id: "business-development-intern",
         title: "Business Development Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Galaxy%20Home%20Automation%20-%20Business%20development.pdf",
         applyLink: "https://forms.gle/NAPVe1DnQYgtRH8S9",
         stipend: "₹10,000 / month"
@@ -65,7 +61,6 @@ const baseCompanies: Company[] = [
       {
         id: "digital-marketing-head-intern",
         title: "Digital Marketing Head Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Galaxy%20HomeAutomation%20-%20Digital%20Marketing%20Head.pdf",
         applyLink: "https://forms.gle/NAPVe1DnQYgtRH8S9",
         stipend: "₹10,000 / month"
@@ -73,7 +68,6 @@ const baseCompanies: Company[] = [
       {
         id: "research-development-intern",
         title: "Research and Development Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Galaxy%20HomeAutomation%20-%20Research%20and%20Developement.pdf",
         applyLink: "https://forms.gle/NAPVe1DnQYgtRH8S9",
         stipend: "₹10,000 / month"
@@ -93,7 +87,6 @@ const baseCompanies: Company[] = [
       {
         id: "graphic-video-editing-intern",
         title: "Graphic Design and Video Editing Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Stravex%20-%20Graphic%20Design%20and%20Video%20Editing.pdf",
         applyLink: "https://forms.gle/Jv22WggKqV9kjep59",
         stipend: "₹5,000 / month"
@@ -101,7 +94,6 @@ const baseCompanies: Company[] = [
       {
         id: "marketing-strategy-growth-intern",
         title: "Marketing Strategy and Growth Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Stravex%20-%20Marketing%20Strategy%20and%20Growth.pdf",
         applyLink: "https://forms.gle/Jv22WggKqV9kjep59",
         stipend: "₹10,000 / month"
@@ -119,7 +111,6 @@ const baseCompanies: Company[] = [
       {
         id: "graphic-design-intern",
         title: "Graphic Design Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Digital%20Expanse%20-%20Graphic%20Design.pdf",
         applyLink: "https://forms.gle/dJzoayUCMAgNeZLb6",
         stipend: "₹10,000 / month"
@@ -127,7 +118,6 @@ const baseCompanies: Company[] = [
       {
         id: "performance-marketing-intern",
         title: "Performance Marketing Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Digital%20Expanse%20-%20Performance%20Marketing.pdf",
         applyLink: "https://forms.gle/dJzoayUCMAgNeZLb6",
         stipend: "₹10,000 / month"
@@ -135,7 +125,6 @@ const baseCompanies: Company[] = [
       {
         id: "social-media-marketing-intern",
         title: "Social Media Marketing Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Digital%20Expanse%20-%20Social%20Media%20Marketing.pdf",
         applyLink: "https://forms.gle/dJzoayUCMAgNeZLb6",
         stipend: "₹10,000 / month"
@@ -143,7 +132,6 @@ const baseCompanies: Company[] = [
       {
         id: "video-editor-intern",
         title: "Video Editor Intern",
-        deadline: "11:00 PM Today", 
         jdPdf: "/Job%20Description/Digital%20Expanse%20-%20Video%20Editor.pdf",
         applyLink: "https://forms.gle/dJzoayUCMAgNeZLb6",
         stipend: "₹10,000 / month"
@@ -163,7 +151,6 @@ const baseCompanies: Company[] = [
       {
         id: "content-marketing-intern",
         title: "Content Marketing Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Zency%20-%20Content%20Marketing.pdf",
         applyLink: "https://forms.gle/dVbZFuNv7dRhRG7Y9",
         stipend: "Unpaid (Learning Internship)"
@@ -181,7 +168,6 @@ const baseCompanies: Company[] = [
       {
         id: "software-developer-intern",
         title: "Software Developer Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/WE%20MATTER%20-%20Software%20Developer.pdf",
         applyLink: "https://forms.gle/VeCYLBbEwnDquLKN7",
         stipend: "₹10,000 / month"
@@ -199,7 +185,6 @@ const baseCompanies: Company[] = [
       {
         id: "graphic-design-intern",
         title: "Graphic Design Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Kreare%20-%20Graphic%20Design.pdf",
         applyLink: "https://forms.gle/KSS8vbrkVL6VTKLp6",
         stipend: "₹5,000 / month"
@@ -207,7 +192,6 @@ const baseCompanies: Company[] = [
       {
         id: "motion-graphics-intern",
         title: "Motion Graphics Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Kreare%20-%20Motion%20Graphics.pdf",
         applyLink: "https://forms.gle/KSS8vbrkVL6VTKLp6",
         stipend: "₹5,000 / month"
@@ -215,7 +199,6 @@ const baseCompanies: Company[] = [
       {
         id: "sales-business-development-intern",
         title: "Sales & Business Development Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Kreare%20-%20Sales%20%26%20Business%20Development.pdf",
         applyLink: "https://forms.gle/KSS8vbrkVL6VTKLp6",
         stipend: "₹5,000 / month"
@@ -234,7 +217,6 @@ const baseCompanies: Company[] = [
       {
         id: "sales-business-development-intern",
         title: "Sales & Business Development Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/HnT%20Foods%20-%20Sales%20%26%20Business%20Development.pdf",
         applyLink: "https://forms.gle/LvdJFVgunwKfpJ9X8",
         stipend: "₹5,000 / month"
@@ -252,7 +234,6 @@ const baseCompanies: Company[] = [
       {
         id: "business-development-associate",
         title: "Business Development Associate",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Audix%20-%20Business%20Development%20Associate.pdf",
         applyLink: "https://forms.gle/hiNj2ir63KWDnchj6",
         stipend: "₹10,000 - ₹15,000 / month"
@@ -270,7 +251,6 @@ const baseCompanies: Company[] = [
       {
         id: "digital-marketing-intern",
         title: "Digital  Marketing Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/SecMark%20-%20Digital%20Marketing.pdf",
         applyLink: "https://forms.gle/Pje6xx1cWrbUPBVB7",
         stipend: "₹5,000 / month"
@@ -278,7 +258,6 @@ const baseCompanies: Company[] = [
       {
         id: "business-development-intern",
         title: "Business Development Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/SecMark%20-%20Business%20Development.pdf",
         applyLink: "https://forms.gle/Pje6xx1cWrbUPBVB7",
         stipend: "₹5,000 / month"
@@ -297,7 +276,6 @@ const baseCompanies: Company[] = [
       {
         id: "unity-ar-vr-developer-intern",
         title: "Unity/AR/VR Developer Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Vighnesh%20INC%20-%20All%20Job%20Descriptions.pdf",
         applyLink: "http://forms.gle/HAe1me3onP54ZzyJ9",
         stipend: "Up to ₹8,000 / month"
@@ -305,7 +283,6 @@ const baseCompanies: Company[] = [
       {
         id: "cv-ml-research-intern",
         title: "CV/ML Research Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Vighnesh%20INC%20-%20All%20Job%20Descriptions.pdf",
         applyLink: "http://forms.gle/HAe1me3onP54ZzyJ9",
         stipend: "Up to ₹8,000 / month"
@@ -313,7 +290,6 @@ const baseCompanies: Company[] = [
       {
         id: "creative-lead",
         title: "Creative Lead",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Vighnesh%20INC%20-%20All%20Job%20Descriptions.pdf",
         applyLink: "http://forms.gle/HAe1me3onP54ZzyJ9",
         stipend: "Up to ₹8,000 / month"
@@ -321,7 +297,6 @@ const baseCompanies: Company[] = [
       {
         id: "software-analyst",
         title: "Software Analyst",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Vighnesh%20INC%20-%20All%20Job%20Descriptions.pdf",
         applyLink: "http://forms.gle/HAe1me3onP54ZzyJ9",
         stipend: "Up to ₹8,000 / month"
@@ -341,7 +316,6 @@ const baseCompanies: Company[] = [
       {
         id: "social-media-intern",
         title: "Social Media Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Florencia%20Paris%20-%20Social%20Media.pdf",
         applyLink: "https://forms.gle/NWNZonUEaxUdamBm8",
         stipend: "₹6,000- ₹10,000 / month"
@@ -360,7 +334,6 @@ const baseCompanies: Company[] = [
        {
          id: "ai-intern",
          title: "AI Intern",
-         deadline: "11:00 PM Today",
          jdPdf: "/Job%20Description/NexaFlo%20Automations%20-%20AI%20Intern.pdf",
          applyLink: "https://forms.gle/DH9hfgDbeQrHn9ZQ6",
          stipend: "Performance Based"
@@ -368,7 +341,6 @@ const baseCompanies: Company[] = [
        {
          id: "web-dev-intern",
          title: "Web Dev Intern",
-         deadline: "11:00 PM Today",
          jdPdf: "/Job%20Description/NexaFlo%20-%20WebDevIntern.pdf",
          applyLink: "https://forms.gle/DH9hfgDbeQrHn9ZQ6",
          stipend: "Performance Based"
@@ -387,7 +359,6 @@ const baseCompanies: Company[] = [
       {
         id: "engineering-intern",
         title: "Engineering Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/ParyaTech%20-%20Engineering%20Intern.pdf",
         applyLink: "https://forms.gle/ytR4SfGZa5qF1WQf8",
         stipend: "₹10,000 / month"
@@ -395,26 +366,25 @@ const baseCompanies: Company[] = [
       {
         id: "ui-ux-intern",
         title: "UI/UX Intern",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/ParyaTech%20-%20UI-UX%20Intern.pdf",
         applyLink: "https://forms.gle/ytR4SfGZa5qF1WQf8",
         stipend: "₹10,000 / month"
       }
     ]
   },
+ 
   {
     id: "adbureau-analytics",
     name: "Adbureau Analytics",
     logo: "/logos/Adbureau -Logo.png",
     industry: "AI, Automation & Market Intelligence",
     shortDescription: "Internship opportunities across AI engineering, automation systems, and growth intelligence roles.",
-    deadline: "31st March 2026, 9:00 PM",
+    deadline: "31st March 2026, 8:00 PM",
     roles: [
       {
         id: "ai-outreach-engineer-intern",
         title: "AI Outreach Engineer",
         roleType: "tech",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Adbureau%20-%20AI%20Outreach%20Engineer.pdf",
         applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
         stipend: "₹5,000 - ₹25,000 (Performance Based)"
@@ -423,7 +393,6 @@ const baseCompanies: Company[] = [
         id: "automation-systems-engineer-intern",
         title: "Automation & Systems Engineer",
         roleType: "tech",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Adbureau%20-%20Automation%20%26%20Systems%20Engineer.pdf",
         applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
         stipend: "₹5,000 - ₹25,000 (Performance Based)"
@@ -432,7 +401,6 @@ const baseCompanies: Company[] = [
         id: "d2c-market-intelligence-analyst-intern",
         title: "D2C Market Intelligence Analyst",
         roleType: "non-tech",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Adbureau%20-%20D2C%20Market%20Intelligence%20Analyst.pdf",
         applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
         stipend: "₹5,000 - ₹25,000 (Performance Based)"
@@ -441,7 +409,6 @@ const baseCompanies: Company[] = [
         id: "gtm-research-analyst-intern",
         title: "GTM Research Analyst",
         roleType: "non-tech",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Adbureau%20-%20GTM%20Research%20Analyst.pdf",
         applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
         stipend: "₹5,000 - ₹25,000 (Performance Based)"
@@ -450,24 +417,44 @@ const baseCompanies: Company[] = [
         id: "lead-data-enrichment-crm-associate-intern",
         title: "Lead Data Enrichment CRM Associate",
         roleType: "non-tech",
-        deadline: "11:00 PM Today",
         jdPdf: "/Job%20Description/Adbureau%20-%20Lead%20Data%20Enrichment%20CRM%20Associate.pdf",
         applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
         stipend: "₹5,000 - ₹25,000 (Performance Based)"
+      }
+    ]
+  },
+   {
+    id: "halewood-laboratories",
+    name: "Halewood Laboratories Pvt Ltd",
+    logo: "/logos/electrorush.png",
+    industry: "Healthcare & Laboratories",
+    shortDescription: "Internship opportunities across three role tracks at Halewood Laboratories.",
+    deadline: "31st March 2026, 8:00 PM",
+    roles: [
+      {
+        id: "cyber-security-system-software-engineer-intern",
+        title: "Cyber Security System Software Engineer Intern",
+        jdPdf: "/Job%20Description/Halewood%20Laboratories.%20-%20Cybersec.pdf",
+        applyLink: "https://forms.gle/iKq3Vwtvxe1FuDN87",
+        stipend: "TBA"
+      },
+      {
+        id: "social-media-automation-agentic-ai-engineer-intern",
+        title: "Social Media Automation & Agentic AI Engineer Intern",
+        jdPdf: "/Job%20Description/Halewood%20Laboratories%20-%20Social%20Media%20%26%20Agentic%20AI%20.pdf",
+        applyLink: "https://forms.gle/iKq3Vwtvxe1FuDN87",
+        stipend: "TBA"
+      },
+      {
+        id: "e-learning-agentic-ai-automation-engineer-intern",
+        title: "E-Learning Agentic AI Automation Engineer Intern",
+        jdPdf: "/Job%20Description/Halewood%20Laboratories%20-%20E-learning%20%26%20Agentic%20AI.pdf",
+        applyLink: "https://forms.gle/iKq3Vwtvxe1FuDN87",
+        stipend: "TBA"
       }
     ]
   }
   
   
 ];
-export const mockCompanies: Company[] = baseCompanies.map((company) => {
-  const deadline = company.deadline;
-
-  return {
-    ...company,
-    roles: company.roles.map((role) => ({
-      ...role,
-      deadline: deadline ?? role.deadline,
-    })),
-  };
-});
+export const mockCompanies: Company[] = baseCompanies;
