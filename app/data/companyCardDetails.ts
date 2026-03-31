@@ -18,6 +18,113 @@ export interface Role {
 }
 
 const baseCompanies: Company[] = [
+
+   {
+    id: "paryatech",
+    name: "ParyaTech",
+    logo: "/logos/Paryatech logo.jpeg",
+    industry: "Technology",
+    shortDescription: "Internship opportunities across engineering and product design tracks.",
+    deadline: "31st March 2026, 7:00 PM",
+    roles: [
+      {
+        id: "engineering-intern",
+        title: "Engineering Intern",
+        jdPdf: "/Job%20Description/ParyaTech%20-%20Engineering%20Intern.pdf",
+        applyLink: "https://forms.gle/ytR4SfGZa5qF1WQf8",
+        stipend: "₹10,000 / month"
+      },
+      {
+        id: "ui-ux-intern",
+        title: "UI/UX Intern",
+        jdPdf: "/Job%20Description/ParyaTech%20-%20UI-UX%20Intern.pdf",
+        applyLink: "https://forms.gle/ytR4SfGZa5qF1WQf8",
+        stipend: "₹10,000 / month"
+      }
+    ]
+  },
+ 
+  {
+    id: "adbureau-analytics",
+    name: "Adbureau Analytics",
+    logo: "/logos/Adbureau -Logo.png",
+    industry: "AI, Automation & Market Intelligence",
+    shortDescription: "Internship opportunities across AI engineering, automation systems, and growth intelligence roles.",
+    deadline: "31st March 2026, 7:00 PM",
+    roles: [
+      {
+        id: "ai-outreach-engineer-intern",
+        title: "AI Outreach Engineer",
+        roleType: "tech",
+        jdPdf: "/Job%20Description/Adbureau%20-%20AI%20Outreach%20Engineer.pdf",
+        applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
+        stipend: "₹5,000 - ₹25,000 (Performance Based)"
+      },
+      {
+        id: "automation-systems-engineer-intern",
+        title: "Automation & Systems Engineer",
+        roleType: "tech",
+        jdPdf: "/Job%20Description/Adbureau%20-%20Automation%20%26%20Systems%20Engineer.pdf",
+        applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
+        stipend: "₹5,000 - ₹25,000 (Performance Based)"
+      },
+      {
+        id: "d2c-market-intelligence-analyst-intern",
+        title: "D2C Market Intelligence Analyst",
+        roleType: "non-tech",
+        jdPdf: "/Job%20Description/Adbureau%20-%20D2C%20Market%20Intelligence%20Analyst.pdf",
+        applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
+        stipend: "₹5,000 - ₹25,000 (Performance Based)"
+      },
+      {
+        id: "gtm-research-analyst-intern",
+        title: "GTM Research Analyst",
+        roleType: "non-tech",
+        jdPdf: "/Job%20Description/Adbureau%20-%20GTM%20Research%20Analyst.pdf",
+        applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
+        stipend: "₹5,000 - ₹25,000 (Performance Based)"
+      },
+      {
+        id: "lead-data-enrichment-crm-associate-intern",
+        title: "Lead Data Enrichment CRM Associate",
+        roleType: "non-tech",
+        jdPdf: "/Job%20Description/Adbureau%20-%20Lead%20Data%20Enrichment%20CRM%20Associate.pdf",
+        applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
+        stipend: "₹5,000 - ₹25,000 (Performance Based)"
+      }
+    ]
+  },
+   {
+    id: "halewood-laboratories",
+    name: "Halewood Laboratories Pvt Ltd",
+    logo: "/logos/electrorush.png",
+    industry: "Healthcare & Laboratories",
+    shortDescription: "Internship opportunities across three role tracks at Halewood Laboratories.",
+    deadline: "31st March 2026, 7:00 PM",
+    roles: [
+      {
+        id: "cyber-security-system-software-engineer-intern",
+        title: "Cyber Security System Software Engineer Intern",
+        jdPdf: "/Job%20Description/Halewood%20Laboratories.%20-%20Cybersec.pdf",
+        applyLink: "https://forms.gle/iKq3Vwtvxe1FuDN87",
+        stipend: "Performance Based"
+      },
+      {
+        id: "social-media-automation-agentic-ai-engineer-intern",
+        title: "Social Media Automation & Agentic AI Engineer Intern",
+        jdPdf: "/Job%20Description/Halewood%20Laboratories%20-%20Social%20Media%20%26%20Agentic%20AI%20.pdf",
+        applyLink: "https://forms.gle/iKq3Vwtvxe1FuDN87",
+        stipend: "Performance Based"
+      },
+      {
+        id: "e-learning-agentic-ai-automation-engineer-intern",
+        title: "E-Learning Agentic AI Automation Engineer Intern",
+        jdPdf: "/Job%20Description/Halewood%20Laboratories%20-%20E-learning%20%26%20Agentic%20AI.pdf",
+        applyLink: "https://forms.gle/iKq3Vwtvxe1FuDN87",
+        stipend: "Performance Based"
+      }
+    ]
+  },
   {
     id: "rudra-cybersecurity",
     name: "RUDRA CyberSecurity",
@@ -346,114 +453,9 @@ const baseCompanies: Company[] = [
          stipend: "Performance Based"
        }
      ]
-   },
+   }
 
-   {
-    id: "paryatech",
-    name: "ParyaTech",
-    logo: "/logos/Paryatech logo.jpeg",
-    industry: "Technology",
-    shortDescription: "Internship opportunities across engineering and product design tracks.",
-    deadline: "31st March 2026, 7:00 PM",
-    roles: [
-      {
-        id: "engineering-intern",
-        title: "Engineering Intern",
-        jdPdf: "/Job%20Description/ParyaTech%20-%20Engineering%20Intern.pdf",
-        applyLink: "https://forms.gle/ytR4SfGZa5qF1WQf8",
-        stipend: "₹10,000 / month"
-      },
-      {
-        id: "ui-ux-intern",
-        title: "UI/UX Intern",
-        jdPdf: "/Job%20Description/ParyaTech%20-%20UI-UX%20Intern.pdf",
-        applyLink: "https://forms.gle/ytR4SfGZa5qF1WQf8",
-        stipend: "₹10,000 / month"
-      }
-    ]
-  },
- 
-  {
-    id: "adbureau-analytics",
-    name: "Adbureau Analytics",
-    logo: "/logos/Adbureau -Logo.png",
-    industry: "AI, Automation & Market Intelligence",
-    shortDescription: "Internship opportunities across AI engineering, automation systems, and growth intelligence roles.",
-    deadline: "31st March 2026, 7:00 PM",
-    roles: [
-      {
-        id: "ai-outreach-engineer-intern",
-        title: "AI Outreach Engineer",
-        roleType: "tech",
-        jdPdf: "/Job%20Description/Adbureau%20-%20AI%20Outreach%20Engineer.pdf",
-        applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
-        stipend: "₹5,000 - ₹25,000 (Performance Based)"
-      },
-      {
-        id: "automation-systems-engineer-intern",
-        title: "Automation & Systems Engineer",
-        roleType: "tech",
-        jdPdf: "/Job%20Description/Adbureau%20-%20Automation%20%26%20Systems%20Engineer.pdf",
-        applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
-        stipend: "₹5,000 - ₹25,000 (Performance Based)"
-      },
-      {
-        id: "d2c-market-intelligence-analyst-intern",
-        title: "D2C Market Intelligence Analyst",
-        roleType: "non-tech",
-        jdPdf: "/Job%20Description/Adbureau%20-%20D2C%20Market%20Intelligence%20Analyst.pdf",
-        applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
-        stipend: "₹5,000 - ₹25,000 (Performance Based)"
-      },
-      {
-        id: "gtm-research-analyst-intern",
-        title: "GTM Research Analyst",
-        roleType: "non-tech",
-        jdPdf: "/Job%20Description/Adbureau%20-%20GTM%20Research%20Analyst.pdf",
-        applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
-        stipend: "₹5,000 - ₹25,000 (Performance Based)"
-      },
-      {
-        id: "lead-data-enrichment-crm-associate-intern",
-        title: "Lead Data Enrichment CRM Associate",
-        roleType: "non-tech",
-        jdPdf: "/Job%20Description/Adbureau%20-%20Lead%20Data%20Enrichment%20CRM%20Associate.pdf",
-        applyLink: "https://forms.gle/3SUJzTYHa6DfGLG77",
-        stipend: "₹5,000 - ₹25,000 (Performance Based)"
-      }
-    ]
-  },
-   {
-    id: "halewood-laboratories",
-    name: "Halewood Laboratories Pvt Ltd",
-    logo: "/logos/electrorush.png",
-    industry: "Healthcare & Laboratories",
-    shortDescription: "Internship opportunities across three role tracks at Halewood Laboratories.",
-    deadline: "31st March 2026, 7:00 PM",
-    roles: [
-      {
-        id: "cyber-security-system-software-engineer-intern",
-        title: "Cyber Security System Software Engineer Intern",
-        jdPdf: "/Job%20Description/Halewood%20Laboratories.%20-%20Cybersec.pdf",
-        applyLink: "https://forms.gle/iKq3Vwtvxe1FuDN87",
-        stipend: "Performance Based"
-      },
-      {
-        id: "social-media-automation-agentic-ai-engineer-intern",
-        title: "Social Media Automation & Agentic AI Engineer Intern",
-        jdPdf: "/Job%20Description/Halewood%20Laboratories%20-%20Social%20Media%20%26%20Agentic%20AI%20.pdf",
-        applyLink: "https://forms.gle/iKq3Vwtvxe1FuDN87",
-        stipend: "Performance Based"
-      },
-      {
-        id: "e-learning-agentic-ai-automation-engineer-intern",
-        title: "E-Learning Agentic AI Automation Engineer Intern",
-        jdPdf: "/Job%20Description/Halewood%20Laboratories%20-%20E-learning%20%26%20Agentic%20AI.pdf",
-        applyLink: "https://forms.gle/iKq3Vwtvxe1FuDN87",
-        stipend: "Performance Based"
-      }
-    ]
-  }
+  
   
   
 ];
