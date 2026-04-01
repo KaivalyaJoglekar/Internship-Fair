@@ -20,6 +20,13 @@ type CompanyGroup = {
 
 const CSV_DIR = path.join(process.cwd(), "app", "interview-slots");
 
+const COMPANY_ALIASES: Record<string, string> = {
+  nexaflo: "Nexaflo Automation",
+  nexaflo_automation: "Nexaflo Automation",
+  nexaflo_automations: "Nexaflo Automation",
+  nexaflo_automations_shortlisted: "Nexaflo Automation",
+};
+
 function normalizeHeader(header: string): string {
   return header.toLowerCase().trim().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
 }
@@ -30,6 +37,39 @@ function normalizeSapId(value: string): string {
 
 function normalizeName(value: string): string {
   return value.toLowerCase().trim().replace(/\s+/g, " ");
+}
+
+function normalizeCompanyKey(value: string): string {
+  return normalizeHeader(value);
+}
+
+function isLikelyHeaderCell(value: string): boolean {
+  const normalized = normalizeHeader(value);
+
+  return (
+    normalized === "time" ||
+    normalized === "name" ||
+    normalized === "sap" ||
+    normalized === "sap_id" ||
+    normalized === "date" ||
+    normalized === "panel" ||
+    normalized === "role" ||
+    normalized === "email" ||
+    normalized === "company" ||
+    normalized === "company_name"
+  );
+}
+
+function canonicalizeCompany(value: string): string {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return "";
+  }
+
+  const withoutParentheticalSuffix = trimmed.replace(/\s*\([^)]*\)\s*$/g, "").trim();
+  const normalized = normalizeCompanyKey(withoutParentheticalSuffix);
+
+  return COMPANY_ALIASES[normalized] ?? withoutParentheticalSuffix;
 }
 
 function isLikelySameSapId(left: string, right: string): boolean {
@@ -147,12 +187,13 @@ function parseCsvLine(line: string): string[] {
 function getCompanyFromFile(fileName: string, lines: string[]): string {
   const firstRow = parseCsvLine(lines[0] ?? "");
   const candidate = firstRow.find((cell) => cell.trim().length > 0)?.trim() ?? "";
+  const companyFromFileName = canonicalizeCompany(path.basename(fileName, path.extname(fileName)));
 
-  if (candidate) {
-    return candidate;
+  if (candidate && !isLikelyHeaderCell(candidate)) {
+    return canonicalizeCompany(candidate);
   }
 
-  return path.basename(fileName, path.extname(fileName));
+  return companyFromFileName;
 }
 
 function parseStandardRows(
@@ -207,9 +248,11 @@ function parseStandardRows(
 
     const explicitCompanies = uniqueNonEmpty(
       explicitCompanyValues.flatMap((value) => splitCompanyValues(value)),
-    );
+    ).map((company) => canonicalizeCompany(company));
 
-    const fallbackCompanies = uniqueNonEmpty(splitCompanyValues(companyFromFile));
+    const fallbackCompanies = uniqueNonEmpty(splitCompanyValues(companyFromFile)).map((company) =>
+      canonicalizeCompany(company),
+    );
     const companyCandidates = explicitCompanies.length > 0 ? explicitCompanies : fallbackCompanies;
 
     const role =
