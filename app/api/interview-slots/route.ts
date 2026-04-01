@@ -24,6 +24,57 @@ function normalizeHeader(header: string): string {
   return header.toLowerCase().trim().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
 }
 
+function normalizeSapId(value: string): string {
+  return value.toLowerCase().trim().replace(/[^a-z0-9]/g, "");
+}
+
+function normalizeName(value: string): string {
+  return value.toLowerCase().trim().replace(/\s+/g, " ");
+}
+
+function isLikelySameSapId(left: string, right: string): boolean {
+  if (!left || !right) {
+    return false;
+  }
+
+  if (left === right) {
+    return true;
+  }
+
+  const lengthDiff = Math.abs(left.length - right.length);
+  if (lengthDiff > 1) {
+    return false;
+  }
+
+  const [shorter, longer] = left.length <= right.length ? [left, right] : [right, left];
+  let shortIndex = 0;
+  let longIndex = 0;
+  let differences = 0;
+
+  while (shortIndex < shorter.length && longIndex < longer.length) {
+    if (shorter[shortIndex] === longer[longIndex]) {
+      shortIndex += 1;
+      longIndex += 1;
+      continue;
+    }
+
+    differences += 1;
+
+    if (differences > 1) {
+      return false;
+    }
+
+    if (shorter.length === longer.length) {
+      shortIndex += 1;
+      longIndex += 1;
+    } else {
+      longIndex += 1;
+    }
+  }
+
+  return true;
+}
+
 function getCell(values: string[], index: number): string {
   if (index < 0 || index >= values.length) {
     return "";
@@ -336,18 +387,54 @@ async function readAllSlotRows(): Promise<SlotRow[]> {
 
 export async function GET(request: NextRequest) {
   const sapId = request.nextUrl.searchParams.get("sapId")?.trim() ?? "";
+  const normalizedSapId = normalizeSapId(sapId);
 
-  if (!sapId) {
+  if (!normalizedSapId) {
     return NextResponse.json({ error: "sapId query parameter is required." }, { status: 400 });
   }
 
   try {
     const allRows = await readAllSlotRows();
-    const matchingRows = allRows.filter((row) => row.sapId === sapId);
+    const exactSapMatches = allRows.filter((row) => normalizeSapId(row.sapId) === normalizedSapId);
+
+    let matchingRows: SlotRow[] = exactSapMatches;
+
+    if (exactSapMatches.length > 0) {
+      const matchedNames = new Set(
+        exactSapMatches
+          .map((row) => normalizeName(row.name))
+          .filter((name) => name.length > 0),
+      );
+
+      matchingRows = allRows.filter((row) => {
+        const rowSap = normalizeSapId(row.sapId);
+
+        if (rowSap === normalizedSapId) {
+          return true;
+        }
+
+        const rowName = normalizeName(row.name);
+        if (!rowName || !matchedNames.has(rowName)) {
+          return false;
+        }
+
+        return isLikelySameSapId(rowSap, normalizedSapId);
+      });
+    } else {
+      const fuzzyMatches = allRows.filter((row) =>
+        isLikelySameSapId(normalizeSapId(row.sapId), normalizedSapId),
+      );
+
+      const uniqueNames = new Set(
+        fuzzyMatches.map((row) => normalizeName(row.name)).filter((name) => name.length > 0),
+      );
+
+      matchingRows = uniqueNames.size === 1 ? fuzzyMatches : [];
+    }
 
     const dedupe = new Set<string>();
     const uniqueRows = matchingRows.filter((row) => {
-      const key = `${row.sapId}|${row.company}|${row.role}|${row.panel}|${row.date}|${row.time}`;
+      const key = `${normalizeName(row.name)}|${row.company}|${row.role}|${row.panel}|${row.date}|${row.time}`;
       if (dedupe.has(key)) {
         return false;
       }
