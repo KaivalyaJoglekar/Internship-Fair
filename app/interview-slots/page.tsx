@@ -68,7 +68,7 @@ export default function InterviewSlotsPage() {
       setResult(data);
 
       if (data.totalSlots === 0) {
-        setErrorMessage("No interview slots found for this SAP ID yet.");
+        setErrorMessage("This SAP ID does not exist.");
       }
     } catch {
       setErrorMessage("Something went wrong while fetching your slots. Please try again.");
