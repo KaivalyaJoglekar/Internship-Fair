@@ -45,14 +45,17 @@ export default function Home() {
   }, [searchTerm]);
   return (
     <div className="flex flex-col items-center justify-center">
-      <Link href="/" className="fixed top-3 left-3 md:top-4 md:left-5 z-50">
+      <Link
+        href="/"
+        className="fixed top-3 left-3 md:top-5 md:left-5 lg:top-4 lg:left-5 z-50 rounded-xl bg-black/55 p-1 backdrop-blur-sm"
+      >
         <Image
           src="/trclogosvg.svg"
           alt="TRC logo"
           width={132}
           height={132}
           priority
-          className="h-16 w-16 md:h-28 md:w-28 object-contain"
+          className="h-16 w-16 md:h-20 md:w-20 lg:h-28 lg:w-28 object-contain"
         />
       </Link>
 
@@ -70,7 +73,7 @@ export default function Home() {
             className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-neutral-900/60 px-4 py-2 text-sm font-medium text-neutral-200"
           >
             <Sparkles className="h-4 w-4 text-brand-light" />
-            Student&apos;s Council&apos;s Technical and Research Cell
+            Student Council&apos;s Technical and Research Cell
           </motion.p>
 
           <motion.h1

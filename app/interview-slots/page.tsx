@@ -34,11 +34,33 @@ type SlotLookupResponse = {
   totalSlots: number;
 };
 
+type OnlineInterviewSlot = {
+  time: string;
+  name: string;
+  sapId: string;
+};
+
+type OnlineScheduleResponse = {
+  company: string;
+  interviewDate: string;
+  slots: OnlineInterviewSlot[];
+  totalSlots: number;
+};
+
+const ONLINE_SCHEDULE_OPTIONS = [
+  { key: "stravex", label: "Stravex (Online)" },
+  { key: "we-matter-round-2", label: "WE Matter - Round 2 (Online)" },
+] as const;
+
 export default function InterviewSlotsPage() {
   const [sapIdInput, setSapIdInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [result, setResult] = useState<SlotLookupResponse | null>(null);
+  const [onlineLoading, setOnlineLoading] = useState(false);
+  const [onlineErrorMessage, setOnlineErrorMessage] = useState("");
+  const [onlineSchedule, setOnlineSchedule] = useState<OnlineScheduleResponse | null>(null);
+  const [activeOnlineCompanyKey, setActiveOnlineCompanyKey] = useState<string>("");
 
   const sapId = useMemo(() => sapIdInput.trim(), [sapIdInput]);
 
@@ -75,6 +97,38 @@ export default function InterviewSlotsPage() {
       setResult(null);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleOnlineScheduleLookup = async (companyKey: string) => {
+    if (activeOnlineCompanyKey === companyKey) {
+      setActiveOnlineCompanyKey("");
+      setOnlineSchedule(null);
+      setOnlineErrorMessage("");
+      return;
+    }
+
+    setOnlineLoading(true);
+    setOnlineErrorMessage("");
+    setActiveOnlineCompanyKey(companyKey);
+
+    try {
+      const response = await fetch(`/api/interview-slots/online?company=${encodeURIComponent(companyKey)}`);
+      const data = (await response.json()) as OnlineScheduleResponse | { error?: string };
+
+      if (!response.ok || !("slots" in data)) {
+        const apiError = "error" in data ? data.error : undefined;
+        setOnlineErrorMessage(apiError ?? "Unable to fetch the online schedule right now.");
+        setOnlineSchedule(null);
+        return;
+      }
+
+      setOnlineSchedule(data);
+    } catch {
+      setOnlineErrorMessage("Something went wrong while fetching the online schedule.");
+      setOnlineSchedule(null);
+    } finally {
+      setOnlineLoading(false);
     }
   };
 
@@ -121,6 +175,88 @@ export default function InterviewSlotsPage() {
             </button>
           </div>
         </form>
+
+        <p className="-mt-3 px-1 text-xs text-brand-light sm:text-sm">
+          Note: Only applicable for Interviews held on 1st April, 2026
+        </p>
+
+        <section className="rounded-2xl border border-white/12 bg-black/65 p-4 sm:p-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-brand-light">Online Schedules</p>
+              <h2 className="mt-1 text-xl font-bold tracking-tight text-white sm:text-2xl">
+                Company-Wise Online Interview Slots
+              </h2>
+            </div>
+            <div className="flex flex-wrap gap-2.5">
+              {ONLINE_SCHEDULE_OPTIONS.map((option) => {
+                const isActive = activeOnlineCompanyKey === option.key;
+
+                return (
+                  <button
+                    key={option.key}
+                    type="button"
+                    onClick={() => handleOnlineScheduleLookup(option.key)}
+                    disabled={onlineLoading}
+                    className={`inline-flex h-11 items-center justify-center rounded-xl border px-5 text-sm font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-70 ${
+                      isActive
+                        ? "border-red-400 text-red-300 ring-1 ring-red-400/40"
+                        : "border-red-500/80 bg-transparent text-red-400 hover:border-red-400 hover:text-red-300"
+                    }`}
+                  >
+                    {onlineLoading && isActive ? "Loading..." : option.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {onlineErrorMessage ? (
+            <p className="mt-4 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-100">
+              {onlineErrorMessage}
+            </p>
+          ) : null}
+
+          {onlineSchedule ? (
+            <div className="mt-5 rounded-xl border border-white/12 bg-black/70">
+              <div className="border-b border-white/10 px-4 py-3 text-sm font-medium text-neutral-200">
+                {onlineSchedule.company} - {onlineSchedule.totalSlots} candidate
+                {onlineSchedule.totalSlots > 1 ? "s" : ""}
+              </div>
+              <div className="border-b border-white/10 px-4 py-3">
+                <p className="mt-1 text-xl font-bold tracking-tight text-brand-light sm:text-2xl">
+                  Interview Date: {onlineSchedule.interviewDate}
+                </p>
+              </div>
+              <div className="overflow-x-auto border-t border-white/10">
+                <table className="min-w-full text-left text-sm text-neutral-200">
+                  <thead className="bg-white/5 text-xs uppercase tracking-[0.16em] text-neutral-400">
+                    <tr>
+                      <th className="px-4 py-3 font-semibold">No.</th>
+                      <th className="px-4 py-3 font-semibold">Time</th>
+                      <th className="px-4 py-3 font-semibold">Name</th>
+                      <th className="px-4 py-3 font-semibold">SAP ID</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {onlineSchedule.slots.map((slot, index) => (
+                      <tr key={`${slot.sapId}-${slot.time}-${index}`} className="border-t border-white/10">
+                        <td className="px-4 py-3 text-neutral-300">{index + 1}</td>
+                        <td className="px-4 py-3 font-medium text-white">{slot.time}</td>
+                        <td className="px-4 py-3">{slot.name}</td>
+                        <td className="px-4 py-3 font-mono text-neutral-100">{slot.sapId}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ) : (
+            <p suppressHydrationWarning className="mt-4 text-sm text-neutral-400">
+              Click on a company button to view the online interview schedule in a table.
+            </p>
+          )}
+        </section>
 
         {errorMessage ? (
           <p className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-100">
