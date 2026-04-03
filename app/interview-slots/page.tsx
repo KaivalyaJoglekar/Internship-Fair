@@ -49,6 +49,7 @@ type OnlineScheduleResponse = {
 
 const ONLINE_SCHEDULE_OPTIONS = [
   { key: "expanse", label: "Expanse Digital" },
+  { key: "adbureau-online", label: "Adbureau (Online)" },
   { key: "hnt", label: "HNT Foods & Kreare" },
   { key: "stravex", label: "Stravex (Online)" },
   { key: "we-matter-round-2", label: "WE Matter - Round 2 (Online)" },
@@ -184,13 +185,13 @@ export default function InterviewSlotsPage() {
 
         <section className="rounded-2xl border border-white/12 bg-black/65 p-4 sm:p-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div>
+            <div className="min-w-0">
               <p className="text-xs uppercase tracking-[0.2em] text-brand-light">Online Schedules</p>
               <h2 className="mt-1 text-xl font-bold tracking-tight text-white sm:text-2xl">
                 Company-Wise Online Interview Slots
               </h2>
             </div>
-            <div className="flex flex-wrap gap-2.5">
+            <div className="grid w-full grid-cols-1 gap-2.5 sm:w-auto sm:max-w-none sm:flex sm:flex-wrap sm:justify-end">
               {ONLINE_SCHEDULE_OPTIONS.map((option) => {
                 const isActive = activeOnlineCompanyKey === option.key;
 
@@ -200,7 +201,7 @@ export default function InterviewSlotsPage() {
                     type="button"
                     onClick={() => handleOnlineScheduleLookup(option.key)}
                     disabled={onlineLoading}
-                    className={`inline-flex h-11 items-center justify-center rounded-xl border px-5 text-sm font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-70 ${
+                    className={`inline-flex min-h-11 min-w-0 items-center justify-center rounded-xl border px-3 py-2 text-center text-xs font-semibold leading-snug transition-all disabled:cursor-not-allowed disabled:opacity-70 sm:min-h-0 sm:px-5 sm:text-sm ${
                       isActive
                         ? "border-red-400 text-red-300 ring-1 ring-red-400/40"
                         : "border-red-500/80 bg-transparent text-red-400 hover:border-red-400 hover:text-red-300"
@@ -221,32 +222,56 @@ export default function InterviewSlotsPage() {
 
           {onlineSchedule ? (
             <div className="mt-5 rounded-xl border border-white/12 bg-black/70">
-              <div className="border-b border-white/10 px-4 py-3 text-sm font-medium text-neutral-200">
-                {onlineSchedule.company} - {onlineSchedule.totalSlots} candidate
-                {onlineSchedule.totalSlots > 1 ? "s" : ""}
+              <div className="border-b border-white/10 px-3 py-3 text-sm font-medium text-neutral-200 sm:px-4">
+                <span className="wrap-break-word">
+                  {onlineSchedule.company} - {onlineSchedule.totalSlots} candidate
+                  {onlineSchedule.totalSlots > 1 ? "s" : ""}
+                </span>
               </div>
-              <div className="border-b border-white/10 px-4 py-3">
-                <p className="mt-1 text-xl font-bold tracking-tight text-brand-light sm:text-2xl">
+              <div className="border-b border-white/10 px-3 py-3 sm:px-4">
+                <p className="mt-1 text-lg font-bold tracking-tight text-brand-light sm:text-xl md:text-2xl">
                   Interview Date: {onlineSchedule.interviewDate}
                 </p>
               </div>
-              <div className="overflow-x-auto border-t border-white/10">
-                <table className="min-w-full text-left text-sm text-neutral-200">
-                  <thead className="bg-white/5 text-xs uppercase tracking-[0.16em] text-neutral-400">
+
+              {/* Mobile: stacked cards */}
+              <ul className="divide-y divide-white/10 border-t border-white/10 sm:hidden">
+                {onlineSchedule.slots.map((slot, index) => (
+                  <li key={`${slot.sapId}-${slot.time}-${index}-m`} className="px-3 py-3">
+                    <div className="flex items-start justify-between gap-2 text-xs text-neutral-400">
+                      <span className="font-semibold text-neutral-300">#{index + 1}</span>
+                      <span className="shrink-0 font-medium text-white">{slot.time}</span>
+                    </div>
+                    <p className="mt-2 wrap-break-word text-sm font-medium text-neutral-100">{slot.name}</p>
+                    <p className="mt-1 font-mono text-xs text-neutral-300">{slot.sapId}</p>
+                  </li>
+                ))}
+              </ul>
+
+              {/* sm+: table */}
+              <div className="hidden overflow-x-auto border-t border-white/10 sm:block">
+                <table className="min-w-full text-left text-xs text-neutral-200 sm:text-sm">
+                  <thead className="bg-white/5 text-[10px] uppercase tracking-[0.12em] text-neutral-400 sm:text-xs sm:tracking-[0.16em]">
                     <tr>
-                      <th className="px-4 py-3 font-semibold">No.</th>
-                      <th className="px-4 py-3 font-semibold">Time</th>
-                      <th className="px-4 py-3 font-semibold">Name</th>
-                      <th className="px-4 py-3 font-semibold">SAP ID</th>
+                      <th className="px-2 py-2.5 font-semibold sm:px-4 sm:py-3">No.</th>
+                      <th className="px-2 py-2.5 font-semibold sm:px-4 sm:py-3">Time</th>
+                      <th className="px-2 py-2.5 font-semibold sm:px-4 sm:py-3">Name</th>
+                      <th className="px-2 py-2.5 font-semibold sm:px-4 sm:py-3">SAP ID</th>
                     </tr>
                   </thead>
                   <tbody>
                     {onlineSchedule.slots.map((slot, index) => (
                       <tr key={`${slot.sapId}-${slot.time}-${index}`} className="border-t border-white/10">
-                        <td className="px-4 py-3 text-neutral-300">{index + 1}</td>
-                        <td className="px-4 py-3 font-medium text-white">{slot.time}</td>
-                        <td className="px-4 py-3">{slot.name}</td>
-                        <td className="px-4 py-3 font-mono text-neutral-100">{slot.sapId}</td>
+                        <td className="px-2 py-2.5 align-top text-neutral-300 sm:px-4 sm:py-3">{index + 1}</td>
+                        <td className="px-2 py-2.5 align-top font-medium whitespace-nowrap text-white sm:px-4 sm:py-3">
+                          {slot.time}
+                        </td>
+                        <td className="max-w-[min(12rem,40vw)] px-2 py-2.5 align-top wrap-break-word sm:max-w-none sm:px-4 sm:py-3">
+                          {slot.name}
+                        </td>
+                        <td className="px-2 py-2.5 align-top font-mono text-[11px] text-neutral-100 sm:px-4 sm:py-3 sm:text-sm">
+                          {slot.sapId}
+                        </td>
                       </tr>
                     ))}
                   </tbody>

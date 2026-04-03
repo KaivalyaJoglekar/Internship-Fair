@@ -73,7 +73,7 @@ export default function Home() {
             className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-neutral-900/60 px-4 py-2 text-sm font-medium text-neutral-200"
           >
             <Sparkles className="h-4 w-4 text-brand-light" />
-            Student Council&apos;s Technical and Research Cell
+            Student&apos;s Council&apos;s Technical and Research Cell
           </motion.p>
 
           <motion.h1
