@@ -9,6 +9,16 @@ type OnlineInterviewSlot = {
 };
 
 const ONLINE_SCHEDULES: Record<string, { company: string; fileName: string; interviewDate: string }> = {
+  expanse: {
+    company: "Expanse Digital",
+    fileName: "Time Slots - Expanse Digital.csv",
+    interviewDate: "3rd April, 2026",
+  },
+  hnt: {
+    company: "HNT Foods & Kreare",
+    fileName: "Time Slots - HNT Foods & Kreare.csv",
+    interviewDate: "3rd April, 2026",
+  },
   stravex: {
     company: "Stravex (Online)",
     fileName: "Stravex (Online).csv",
@@ -118,7 +128,7 @@ export async function GET(request: NextRequest) {
 
   if (!companyKey || !ONLINE_SCHEDULES[companyKey]) {
     return NextResponse.json(
-      { error: "Unsupported company. Supported values: stravex, we-matter-round-2." },
+      { error: "Unsupported company. Supported values: expanse, hnt, stravex, we-matter-round-2." },
       { status: 400 },
     );
   }

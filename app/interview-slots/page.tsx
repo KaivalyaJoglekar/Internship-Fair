@@ -48,6 +48,8 @@ type OnlineScheduleResponse = {
 };
 
 const ONLINE_SCHEDULE_OPTIONS = [
+  { key: "expanse", label: "Expanse Digital" },
+  { key: "hnt", label: "HNT Foods & Kreare" },
   { key: "stravex", label: "Stravex (Online)" },
   { key: "we-matter-round-2", label: "WE Matter - Round 2 (Online)" },
 ] as const;
