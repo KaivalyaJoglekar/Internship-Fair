@@ -82,7 +82,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="fixed top-20 md:top-24 lg:top-6 left-1/2 -translate-x-1/2 w-[94%] md:w-[90%] lg:w-[92%] max-w-4xl z-40">
+    <div className="fixed top-24 md:top-28 lg:top-6 left-1/2 -translate-x-1/2 lg:left-[calc(50%+3rem)] w-[94%] md:w-[90%] lg:w-[min(calc(100%-12rem),56rem)] max-w-4xl z-40">
       <nav className="glass rounded-full border border-white/20 bg-black/80/95 backdrop-blur-2xl px-5 md:px-6 h-16 flex items-center gap-6 shadow-[0_12px_30px_rgba(0,0,0,0.5)] transition-all duration-300">
         <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
           <span>Internship <span className="text-brand"> Fair</span></span>

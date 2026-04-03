@@ -47,7 +47,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center">
       <Link
         href="/"
-        className="fixed top-3 left-3 md:top-5 md:left-5 lg:top-4 lg:left-5 z-50 rounded-xl bg-black/55 p-1 backdrop-blur-sm"
+        className="fixed top-3 left-3 md:top-5 md:left-5 lg:top-4 lg:left-5 z-50"
       >
         <Image
           src="/trclogosvg.svg"
@@ -55,7 +55,7 @@ export default function Home() {
           width={132}
           height={132}
           priority
-          className="h-16 w-16 md:h-20 md:w-20 lg:h-28 lg:w-28 object-contain"
+          className="h-16 w-16 md:h-20 md:w-20 lg:h-28 lg:w-28 object-contain drop-shadow-[0_6px_14px_rgba(0,0,0,0.35)]"
         />
       </Link>
 
