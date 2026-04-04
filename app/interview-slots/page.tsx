@@ -51,6 +51,7 @@ const ONLINE_SCHEDULE_OPTIONS = [
   { key: "expanse", label: "Expanse Digital" },
   { key: "adbureau-online", label: "Adbureau (Online)" },
   { key: "hnt", label: "HNT Foods & Kreare" },
+  { key: "paryatech-online", label: "Paryatech (Online)" },
   { key: "stravex", label: "Stravex (Online)" },
   { key: "we-matter-round-2", label: "WE Matter - Round 2 (Online)" },
 ] as const;
@@ -64,6 +65,7 @@ export default function InterviewSlotsPage() {
   const [onlineErrorMessage, setOnlineErrorMessage] = useState("");
   const [onlineSchedule, setOnlineSchedule] = useState<OnlineScheduleResponse | null>(null);
   const [activeOnlineCompanyKey, setActiveOnlineCompanyKey] = useState<string>("");
+  const [showSapLookupAboveOnline, setShowSapLookupAboveOnline] = useState(false);
 
   const sapId = useMemo(() => sapIdInput.trim(), [sapIdInput]);
 
@@ -71,11 +73,13 @@ export default function InterviewSlotsPage() {
     event.preventDefault();
 
     if (!sapId) {
+      setShowSapLookupAboveOnline(false);
       setErrorMessage("Please enter your SAP ID.");
       setResult(null);
       return;
     }
 
+    setShowSapLookupAboveOnline(true);
     setLoading(true);
     setErrorMessage("");
 
@@ -135,6 +139,113 @@ export default function InterviewSlotsPage() {
     }
   };
 
+  const handleMobileOnlineScheduleSelect = async (companyKey: string) => {
+    if (!companyKey) {
+      setActiveOnlineCompanyKey("");
+      setOnlineSchedule(null);
+      setOnlineErrorMessage("");
+      return;
+    }
+
+    await handleOnlineScheduleLookup(companyKey);
+  };
+
+  const sapLookupSection = (
+    <>
+      {errorMessage ? (
+        <p className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-100">
+          {errorMessage}
+        </p>
+      ) : null}
+
+      {result && result.totalSlots > 0 ? (
+        <div className="space-y-6">
+          <div className="grid gap-4 md:grid-cols-[1.6fr_1fr]">
+            <div className="rounded-2xl border border-white/12 bg-black/70 p-5 sm:p-6">
+              <p className="text-xs uppercase tracking-[0.2em] text-neutral-400">Participant</p>
+              <div className="mt-3 flex items-start gap-3">
+                <span className="mt-0.5 rounded-xl border border-white/15 bg-black/70 p-2">
+                  <UserRound className="h-4 w-4 text-brand-light" />
+                </span>
+                <div>
+                  <p className="text-lg font-semibold text-white">{result.participant?.name}</p>
+                  <p className="mt-1 break-all text-sm text-neutral-300">{result.participant?.email}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-white/12 bg-black/70 p-5 sm:p-6">
+              <p className="text-xs uppercase tracking-[0.2em] text-neutral-400">Summary</p>
+              <p className="mt-3 text-3xl font-bold text-white">{result.totalSlots}</p>
+              <p className="mt-1 text-sm text-neutral-300">
+                Total slot{result.totalSlots > 1 ? "s" : ""} assigned
+              </p>
+              <p className="mt-3 text-xs text-neutral-500">Venue: Big Seminar Hall</p>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            {result.companies.map((companyGroup) => (
+              <article
+                key={companyGroup.company}
+                className="overflow-hidden rounded-2xl border border-white/12 bg-black/70"
+              >
+                <div className="border-b border-white/10 px-4 py-4 sm:px-6">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div className="flex items-center gap-2.5">
+                      <Building2 className="h-5 w-5 text-brand-light" />
+                      <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
+                        {companyGroup.company}
+                      </h2>
+                    </div>
+                    <span className="rounded-full border border-brand/35 bg-brand/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.16em] text-brand-light">
+                      {companyGroup.slots.length} Slot{companyGroup.slots.length > 1 ? "s" : ""}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="grid gap-3 p-4 sm:grid-cols-2 sm:p-6 lg:grid-cols-3">
+                  {companyGroup.slots.map((slot, index) => (
+                    <div
+                      key={`${slot.company}-${slot.role}-${slot.panel}-${slot.date}-${slot.time}-${index}`}
+                      className="rounded-xl border border-white/12 bg-black/80 p-4"
+                    >
+                      <div className="mb-3 flex items-start gap-2.5">
+                        <BriefcaseBusiness className="mt-0.5 h-4 w-4 shrink-0 text-brand-light" />
+                        <p className="text-sm font-semibold leading-6 text-white sm:text-base">
+                          {slot.role || "Interview Round"}
+                        </p>
+                      </div>
+
+                      <div className="space-y-1.5 text-sm text-neutral-300">
+                        {slot.panel ? (
+                          <p>
+                            <span className="font-medium text-neutral-400">Panel:</span> {slot.panel}
+                          </p>
+                        ) : null}
+                        {slot.date ? (
+                          <p className="flex items-center gap-2">
+                            <CalendarDays className="h-3.5 w-3.5 text-brand-light/90" />
+                            <span>{slot.date}</span>
+                          </p>
+                        ) : null}
+                        <p className="flex items-center gap-2">
+                          <Clock3 className="h-3.5 w-3.5 text-brand-light/90" />
+                          <span>{slot.time}</span>
+                        </p>
+                        <p className="pt-1 text-neutral-400">Venue: Big Seminar Hall</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      ) : null}
+    </>
+  );
+
   return (
     <section className="relative isolate min-h-screen w-full bg-transparent px-3 py-10 sm:px-6 md:px-8 md:py-14">
       <div
@@ -183,6 +294,8 @@ export default function InterviewSlotsPage() {
           Note: Only applicable for Interviews held on 1st April, 2026
         </p>
 
+        {showSapLookupAboveOnline ? sapLookupSection : null}
+
         <section className="rounded-2xl border border-white/12 bg-black/65 p-4 sm:p-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="min-w-0">
@@ -191,7 +304,30 @@ export default function InterviewSlotsPage() {
                 Company-Wise Online Interview Slots
               </h2>
             </div>
-            <div className="grid w-full grid-cols-1 gap-2.5 sm:w-auto sm:max-w-none sm:flex sm:flex-wrap sm:justify-end">
+
+            <div className="w-full sm:hidden">
+              <label htmlFor="online-company-select" className="sr-only">
+                Select company for online slots
+              </label>
+              <select
+                id="online-company-select"
+                value={activeOnlineCompanyKey}
+                onChange={(event) => handleMobileOnlineScheduleSelect(event.target.value)}
+                disabled={onlineLoading}
+                className="h-11 w-full rounded-xl border border-white/20 bg-black/80 px-3 text-sm font-medium text-white outline-none transition-all focus:border-brand/70 focus:ring-2 focus:ring-brand/25 disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                <option value="" className="bg-black text-neutral-300">
+                  Select company
+                </option>
+                {ONLINE_SCHEDULE_OPTIONS.map((option) => (
+                  <option key={option.key} value={option.key} className="bg-black text-white">
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="hidden w-full max-w-none flex-wrap justify-end gap-2.5 sm:flex sm:w-auto">
               {ONLINE_SCHEDULE_OPTIONS.map((option) => {
                 const isActive = activeOnlineCompanyKey === option.key;
 
@@ -280,102 +416,12 @@ export default function InterviewSlotsPage() {
             </div>
           ) : (
             <p suppressHydrationWarning className="mt-4 text-sm text-neutral-400">
-              Click on a company button to view the online interview schedule in a table.
+              Select a company to view the online interview schedule.
             </p>
           )}
         </section>
 
-        {errorMessage ? (
-          <p className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-100">
-            {errorMessage}
-          </p>
-        ) : null}
-
-        {result && result.totalSlots > 0 ? (
-          <div className="space-y-6">
-            <div className="grid gap-4 md:grid-cols-[1.6fr_1fr]">
-              <div className="rounded-2xl border border-white/12 bg-black/70 p-5 sm:p-6">
-                <p className="text-xs uppercase tracking-[0.2em] text-neutral-400">Participant</p>
-                <div className="mt-3 flex items-start gap-3">
-                  <span className="mt-0.5 rounded-xl border border-white/15 bg-black/70 p-2">
-                    <UserRound className="h-4 w-4 text-brand-light" />
-                  </span>
-                  <div>
-                    <p className="text-lg font-semibold text-white">{result.participant?.name}</p>
-                    <p className="mt-1 break-all text-sm text-neutral-300">{result.participant?.email}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-white/12 bg-black/70 p-5 sm:p-6">
-                <p className="text-xs uppercase tracking-[0.2em] text-neutral-400">Summary</p>
-                <p className="mt-3 text-3xl font-bold text-white">{result.totalSlots}</p>
-                <p className="mt-1 text-sm text-neutral-300">
-                  Total slot{result.totalSlots > 1 ? "s" : ""} assigned
-                </p>
-                <p className="mt-3 text-xs text-neutral-500">Venue: Big Seminar Hall</p>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              {result.companies.map((companyGroup) => (
-                <article
-                  key={companyGroup.company}
-                  className="overflow-hidden rounded-2xl border border-white/12 bg-black/70"
-                >
-                  <div className="border-b border-white/10 px-4 py-4 sm:px-6">
-                    <div className="flex flex-wrap items-center justify-between gap-3">
-                      <div className="flex items-center gap-2.5">
-                        <Building2 className="h-5 w-5 text-brand-light" />
-                        <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
-                          {companyGroup.company}
-                        </h2>
-                      </div>
-                      <span className="rounded-full border border-brand/35 bg-brand/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.16em] text-brand-light">
-                        {companyGroup.slots.length} Slot{companyGroup.slots.length > 1 ? "s" : ""}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="grid gap-3 p-4 sm:grid-cols-2 sm:p-6 lg:grid-cols-3">
-                    {companyGroup.slots.map((slot, index) => (
-                      <div
-                        key={`${slot.company}-${slot.role}-${slot.panel}-${slot.date}-${slot.time}-${index}`}
-                        className="rounded-xl border border-white/12 bg-black/80 p-4"
-                      >
-                        <div className="mb-3 flex items-start gap-2.5">
-                          <BriefcaseBusiness className="mt-0.5 h-4 w-4 shrink-0 text-brand-light" />
-                          <p className="text-sm font-semibold leading-6 text-white sm:text-base">
-                            {slot.role || "Interview Round"}
-                          </p>
-                        </div>
-
-                        <div className="space-y-1.5 text-sm text-neutral-300">
-                          {slot.panel ? (
-                            <p>
-                              <span className="font-medium text-neutral-400">Panel:</span> {slot.panel}
-                            </p>
-                          ) : null}
-                          {slot.date ? (
-                            <p className="flex items-center gap-2">
-                              <CalendarDays className="h-3.5 w-3.5 text-brand-light/90" />
-                              <span>{slot.date}</span>
-                            </p>
-                          ) : null}
-                          <p className="flex items-center gap-2">
-                            <Clock3 className="h-3.5 w-3.5 text-brand-light/90" />
-                            <span>{slot.time}</span>
-                          </p>
-                          <p className="pt-1 text-neutral-400">Venue: Big Seminar Hall</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        ) : null}
+        {!showSapLookupAboveOnline ? sapLookupSection : null}
 
         <section className="rounded-2xl border border-white/12 bg-black/65 p-5 sm:p-6">
           <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-light">Please Note</h2>

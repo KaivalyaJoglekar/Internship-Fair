@@ -24,6 +24,11 @@ const ONLINE_SCHEDULES: Record<string, { company: string; fileName: string; inte
     fileName: "Time Slots - HNT Foods & Kreare.csv",
     interviewDate: "3rd April, 2026",
   },
+  "paryatech-online": {
+    company: "Paryatech (Online)",
+    fileName: "Time Slots - Paryatech(Online).csv",
+    interviewDate: "3rd April, 2026",
+  },
   stravex: {
     company: "Stravex (Online)",
     fileName: "Stravex (Online).csv",
@@ -135,7 +140,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(
       {
         error:
-          "Unsupported company. Supported values: expanse, adbureau-online, hnt, stravex, we-matter-round-2.",
+          "Unsupported company. Supported values: expanse, adbureau-online, hnt, paryatech-online, stravex, we-matter-round-2.",
       },
       { status: 400 },
     );
